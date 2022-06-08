@@ -1,0 +1,242 @@
+.detv{
+    margin-top: 5%;
+    
+    margin-left: 5%;
+
+}
+
+
+.detv1{
+    width: 40%;
+}
+
+.marigi{
+    text-align: center;
+}
+
+.bla{
+    color: black;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    font-family: Brush Script MT;
+    
+}
+
+.sizechart{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.bodyd{
+    overflow: hidden;
+}
+
+.bag{
+    text-align: center;
+}
+
+.bus{
+    background-color: black;
+    color: white;
+    width: 40%;
+    
+    border-radius: 30px;
+}
+
+.image{
+    margin-top: 2%;
+}
+
+
+
+
+
+
+
+
+
+.detailBox {
+    width:320px;
+    border:1px solid #bbb;
+    margin:5px;
+}
+.titleBox {
+    background-color:#fdfdfd;
+    padding:10px;
+}
+.titleBox label{
+  color:#444;
+  margin:0;
+  display:inline-block;
+}
+
+.commentBox {
+    padding:10px;
+    border-top:1px dotted #bbb;
+}
+.commentBox .form-group:first-child, .actionBox .form-group:first-child {
+    width:80%;
+}
+.commentBox .form-group:nth-child(2), .actionBox .form-group:nth-child(2) {
+    width:18%;
+}
+.actionBox .form-group * {
+    width:100%;
+}
+.taskDescription {
+    margin-top:10px 0;
+}
+.commentList {
+    padding:0;
+    list-style:none;
+    max-height:200px;
+    overflow:auto;
+}
+.commentList li {
+    margin:0;
+    margin-top:10px;
+}
+.commentList li > div {
+    display:table-cell;
+}
+.commenterImage {
+    width:30px;
+    margin-right:5px;
+    height:100%;
+    float:left;
+}
+.commenterImage img {
+    width:100%;
+    border-radius:50%;
+}
+.commentText p {
+    margin:0;
+}
+.sub-text {
+    color:#aaa;
+    font-family:verdana;
+    font-size:11px;
+}
+.actionBox {
+    border-top:1px dotted #bbb;
+    padding:10px;
+}
+
+
+
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400);
+@import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+
+
+
+
+.inner {
+  padding: 1em;
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px; 
+  border-radius: 4px; 
+}
+
+.rating {
+  float: left;
+  width: 45%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.rating-num {
+  color: #333333;
+  font-size: 72px;
+  font-weight: 100;
+  line-height: 1em; 
+}
+
+.rating-stars {
+  font-size: 20px;
+  color: #E3E3E3;
+  margin-bottom: .5em;
+}
+.rating-stars .active {
+  color: #737373;
+}
+
+.rating-users {
+  font-size: 14px;
+}
+
+.histo {
+  float: left;
+  width: 50%;
+  font-size: 13px;
+}
+
+.histo-star {
+  float: left;
+  padding: 3px;
+
+}
+
+.histo-rate {
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+.bar-block {
+  margin-left: 5px;
+  color: black;
+  display: block;
+  float: left;
+  width: 75%;
+  position: relative;
+}
+
+.bar {
+  padding: 4px;
+  display: block;
+}
+
+#bar-five {
+  width: 0;
+  background-color: #9FC05A;
+}
+
+#bar-four {
+  width: 0;
+  background-color: #ADD633;
+}
+
+#bar-three {
+  width: 0;
+  background-color: #FFD834;
+}
+
+#bar-two {
+  width: 0;
+  background-color: #FFB234;
+}
+
+#bar-one {
+  width: 0;
+  background-color: #FF8B5A;
+}
+
+
+
+
+
+
+.foot{
+    color: white;
+}

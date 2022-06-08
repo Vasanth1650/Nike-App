@@ -1,0 +1,453 @@
+.body {
+  background-color: white;
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+}
+
+.popular{
+  background-color: white;
+}
+
+.ad{
+  text-align: center;
+}
+.popularbut{
+  text-align: center;
+}
+
+.popbut{
+  background-color: transparent;
+  
+}
+
+.headpop{
+  text-align: center;
+  color: #000;
+  font-size: larger;
+  font-family: Brush Script MT;
+  font-weight: bolder;
+  
+}
+
+.headpop1{
+  color: #000;
+  font-weight: bolder;
+  font-family: Comic Sans MS;
+  font-size: 25px;
+}
+
+.bodys {
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg,red 20%, white 70%);
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  text-align: center;
+  color: #000;
+}
+
+.bodysi{
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg,red 20%, white 70%);
+  font-family: Comic Sans MS;
+  text-align: center;
+  font-size: 30px;
+  color: #000;
+}
+
+.bodysii{
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg,red 20%, white 70%);
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  text-align: center;
+  color: #000;
+}
+
+
+
+.me-2 {
+  background-color: lightgray;
+}
+
+.dum {
+  font-size: larger;
+}
+
+.card5 {
+  margin-left: 6%;
+  width: 20%;
+
+}
+.cards{
+  width: 40%;
+  height: 10%;
+  margin-left: 18%;
+}
+.cardsi{
+  width: 20%;
+  height: 10%;
+  margin-left: 18%;
+}
+
+
+.cardii{
+  margin-left: 4%;
+  width: 20%;
+
+}
+.cardi {
+  margin-left: 3%;
+  width: 40%;
+
+}
+
+.nike {
+  text-align: center;
+  margin-top: 5%;
+  color: black;
+  font-family: Comic Sans MS;
+}
+
+.moveit {
+  background-color: #ff9800;
+  color: #fff;
+  margin-left: 45%;
+}
+
+
+.adjust {
+  margin-left: 15%;
+  font-family: 'Lato', sans-serif
+}
+
+
+
+
+
+
+
+
+.frame {
+  text-align: center;
+}
+
+.custom-btn {
+  color: #fff;
+  border-radius: 5px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+  outline: none;
+}
+
+.btn-14 {
+  background: rgb(255, 151, 0);
+  border: none;
+  z-index: 1;
+  margin-left: 25%;
+}
+
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+
+  transition: all 0.3s ease;
+}
+
+.btn-14:hover {
+  color: #000;
+}
+
+.btn-14:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+
+.btn-14:active {
+  top: 2px;
+}
+
+
+
+
+
+.btn-16 {
+  border: none;
+  width: 70%;
+}
+.btn-16:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+ 
+  transition: all 0.3s ease;
+}
+.btn-16:hover {
+  color: orange;
+}
+.btn-16:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.btn-16:active {
+  top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+
+
+/* Remove extra left and right margins, due to padding */
+
+
+/* Clear floats after the columns */
+
+
+/* Responsive columns */
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+
+
+.textmen{
+  color: #000;
+  margin-left: 2%;
+}
+
+
+
+
+
+
+
+
+
+.items{
+  color: #000;
+  
+  
+}
+
+
+
+
+
+
+
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+.footer-section {
+background: #151414;
+position: relative;
+}
+.footer-cta {
+border-bottom: 1px solid #373636;
+}
+.single-cta i {
+color: #ff5e14;
+font-size: 30px;
+float: left;
+margin-top: 8px;
+}
+.cta-text {
+padding-left: 15px;
+display: inline-block;
+}
+.cta-text h4 {
+color: #fff;
+font-size: 20px;
+font-weight: 600;
+margin-bottom: 2px;
+}
+.cta-text span {
+color: #757575;
+font-size: 15px;
+}
+.footer-content {
+position: relative;
+z-index: 2;
+}
+.footer-pattern img {
+position: absolute;
+top: 0;
+left: 0;
+height: 330px;
+background-size: cover;
+background-position: 100% 100%;
+}
+.footer-logo {
+margin-bottom: 30px;
+}
+.footer-logo img {
+  max-width: 200px;
+}
+.footer-text p {
+margin-bottom: 14px;
+font-size: 14px;
+    color: #7e7e7e;
+line-height: 28px;
+}
+.footer-social-icon span {
+color: #fff;
+display: block;
+font-size: 20px;
+font-weight: 700;
+font-family: 'Poppins', sans-serif;
+margin-bottom: 20px;
+}
+.footer-social-icon a {
+color: #fff;
+font-size: 16px;
+margin-right: 15px;
+}
+.footer-social-icon i {
+height: 40px;
+width: 40px;
+text-align: center;
+line-height: 38px;
+border-radius: 50%;
+}
+.facebook-bg{
+background: #3B5998;
+}
+.twitter-bg{
+background: #55ACEE;
+}
+.google-bg{
+background: #DD4B39;
+}
+.footer-widget-heading h3 {
+color: #fff;
+font-size: 20px;
+font-weight: 600;
+margin-bottom: 40px;
+position: relative;
+}
+.footer-widget-heading h3::before {
+content: "";
+position: absolute;
+left: 0;
+bottom: -15px;
+height: 2px;
+width: 50px;
+background: #ff5e14;
+}
+.footer-widget ul li {
+display: inline-block;
+float: left;
+width: 50%;
+margin-bottom: 12px;
+}
+.footer-widget ul li a:hover{
+color: #ff5e14;
+}
+.footer-widget ul li a {
+color: #878787;
+text-transform: capitalize;
+}
+.subscribe-form {
+position: relative;
+overflow: hidden;
+}
+.subscribe-form input {
+width: 100%;
+padding: 14px 28px;
+background: #2E2E2E;
+border: 1px solid #2E2E2E;
+color: #fff;
+}
+.subscribe-form button {
+  position: absolute;
+  right: 0;
+  background: #ff5e14;
+  padding: 13px 20px;
+  border: 1px solid #ff5e14;
+  top: 0;
+}
+.subscribe-form button i {
+color: #fff;
+font-size: 22px;
+transform: rotate(-6deg);
+}
+.copyright-area{
+background: #202020;
+padding: 25px 0;
+}
+.copyright-text p {
+margin: 0;
+font-size: 14px;
+color: #878787;
+}
+.copyright-text p a{
+color: #ff5e14;
+}
+.footer-menu li {
+display: inline-block;
+margin-left: 20px;
+}
+.footer-menu li:hover a{
+color: #ff5e14;
+}
+.footer-menu li a {
+font-size: 14px;
+color: #878787;
+}
+
+
+
+
+
+
+
+.texting{
+  color: #000;
+}
