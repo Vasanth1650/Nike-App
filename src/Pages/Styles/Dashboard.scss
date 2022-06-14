@@ -540,3 +540,69 @@ svg{
   }
 } 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,900;1,900&display=swap');
+
+.nikes{
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax-text{
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25vw;
+  font-style: italic;
+  color: white;
+}
+
+.parallax-text::after{
+  content: attr(text);
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 0.15vw black;
+}
+
+.given{
+  width: 60vw;
+  animation: sneakerAnimation 5s cubic-bezier(0.2, 1, 0.2, 1)  alternate;
+  transform: rotate(-30deg);
+  margin-right: 15%;
+  margin-top: 1%;
+}
+
+@keyframes sneakerAnimation {
+  0%, 10% {
+    transform:  translate(100vw, 0) rotate(15deg);
+  }
+  90%, 100% {
+    transform:  translate(-5vw, -5vw) rotate(-30deg);
+  }
+}

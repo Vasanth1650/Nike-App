@@ -24,9 +24,8 @@ const Login = ({loading,error, ...props})=> {
             console.log("response", response);
             if (response.status === 200) {
                 props.setUser(response.data);
-
-
-                usenavigate(-1);
+                localStorage.setItem("Assign",true);
+                usenavigate("/dashboard");
             }
             else {
                 props.loginFailure('Something Wrong!Please Try Again');
@@ -77,7 +76,7 @@ const Login = ({loading,error, ...props})=> {
     
       
     return (
-        <div >
+        <div className='login'>
             <section>
                 <div class="container">
                     <div class="user signinBx">
@@ -92,10 +91,10 @@ const Login = ({loading,error, ...props})=> {
                                         <div >
                                             <ul className="nav nav-tabs nav-justified" id="myTab" role="tablist">
                                                 <li className="nav-item">
-                                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="/admin/login" role="tab" aria-controls="home" aria-selected="true">Admin</a>
+                                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="/" role="tab" aria-controls="home" aria-selected="true">Login</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" id="profile-tab" data-toggle="tab" href="/user/login" role="tab" aria-controls="profile" aria-selected="false">User</a>
+                                                    <a className="nav-link " id="home-tab" data-toggle="tab" href="/signup" role="tab" aria-controls="home" aria-selected="true">Signup</a>
                                                 </li>
                                             </ul>
                                             <br></br>
@@ -103,9 +102,9 @@ const Login = ({loading,error, ...props})=> {
 
                                             <form className="my-login-validation" onSubmit={handleSubmit} noValidate={false}>
                                                 <div className="gradient">
-                                                    <label htmlFor="email">Enter Your Email</label>
+                                                    
                                                     <input id="username" type="email" minLength={5}
-                                                        value={values.username} onChange={handleChange} name="username" required />
+                                                       placeholder='Enter Email' value={values.username} onChange={handleChange} name="username" required />
 
                                                     <div className="invalid-feedback">
                                                         UserId is invalid
@@ -116,11 +115,8 @@ const Login = ({loading,error, ...props})=> {
                                                 </div>
 
                                                 <div className="gradient">
-                                                    <label>Enter Your Password
-
-                                                    </label>
                                                     <input id="password" type="password" minLength={8}
-                                                        value={values.password} onChange={handleChange} name="password" required />
+                                                       placeholder='Enter Password' value={values.password} onChange={handleChange} name="password" required />
                                                     <div className="invalid-feedback">
                                                         Password is required
                                                     </div>
@@ -139,7 +135,7 @@ const Login = ({loading,error, ...props})=> {
                                                 </div>
                                                 <p class="signup">
                                                     Don't have an account ?
-                                                    <a href="/admin/mailer" onclick="toggleForm();">Sign Up.</a>
+                                                    <a href="/signup" onclick="toggleForm();">Sign Up.</a>
                                                 </p>
                                             </form>
                                             {error &&

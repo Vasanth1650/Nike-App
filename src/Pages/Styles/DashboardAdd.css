@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.adding{background-image: url("http://res.cloudinary.com/rinma/image/upload/v1498143792/Clouds-Background-HD-min_y126nz.jpg");
+background-size:cover;
+
+font-family: 'Roboto', sans-serif;  
+}
+body.freeze {
+  pointer-events: none;
+}
+
+h2{
+  font-family: 'Roboto', sans-serif;
+  color:#216466;
+}
+
+
+     
+
+section{
+background-color:white;
+ text-align:center;
+-webkit-box-shadow: -14px 11px 17px 3px rgba(135,131,135,0.81);
+-moz-box-shadow: -14px 11px 17px 3px rgba(135,131,135,0.81);
+box-shadow: -14px 11px 17px 3px rgba(135,131,135,0.81);
+
+border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px none #000000;
+}
+
+
+
+.hidden{
+display:none;}
+
+
+/*-------------progress------------------------------------------*/
+
+.form-progress {
+  position: relative;
+  display: block;
+  margin: 3rem auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+progress {
+  display: block;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #0bcc6c;
+  width: 100%;
+  height: 5px;
+  background: none;
+  transition: 1s;
+  will-change: contents;
+}
+progress::-webkit-progress-bar {
+  background-color:white;
+}
+progress::-webkit-progress-value {
+  background-color: #0bcc6c;
+  transition: all 0.5s ease-in-out;
+}
+
+
+
+.form-progress-indicator {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: white;
+  border: 3px solid #ddd;
+  border-radius: 50%;
+  transition: all .2s ease-in-out;
+  transition-delay: .5s;
+  will-change: transform;
+}
+.form-progress-indicator.one {
+  left: 0;
+}
+.form-progress-indicator.two {
+  left: 33%;
+}
+.form-progress-indicator.three {
+  left: 66%;
+}
+.form-progress-indicator.four {
+  left: 100%;
+}
+.form-progress-indicator.active {
+  animation: bounce .5s forwards;
+  animation-delay: .5s;
+  border-color:#33cc66;
+}
+
+
+
+.plane{
+    position: absolute;
+    
+  top: -33px;
+  left: -20px;
+  display: inline-block;
+  width: 70px;
+  z-index:10;
+  transition: all .2s ease-in-out;
+  transition-delay: .3s;
+  will-change: transform;
+}
+
+
+/*-----------------------------input------------------------------------------*/
+.group { 
+	position: relative; 
+	margin-bottom: 45px;
+  margin-left:30px;
+  margin-right:30px;
+}
+
+
+input {
+	font-size: 18px;
+	padding: 10px 10px 10px 5px;
+	-webkit-appearance: none;
+	display: block;
+	background: #fff;
+	color: #636363;
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	border-bottom: 1px solid #757575;
+}
+
+input:focus { outline: none; }
+
+
+/* Label */
+
+
+
+
+/* active */
+
+input:focus ~ label, input.used ~ label {
+	top: -20px;
+  transform: scale(.75); left: -2px;
+	/* font-size: 14px; */
+	color: #4a89dc;
+}
+
+
+/* Underline */
+
+.bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 1px; 
+	position: absolute;
+	background: #4a89dc; 
+	transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+
+/* active */
+
+input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+
+
+/* Highlight */
+
+.highlight {
+	position: absolute;
+	height: 60%; 
+	width: 100px; 
+	top: 25%; 
+	left: 0;
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+
+/* active */
+
+input:focus ~ .highlight {
+	animation: inputHighlighter 0.3s ease;
+}
+
+
+/* Animations */
+
+@keyframes inputHighlighter {
+	from { background: #4a89dc; }
+	to 	{ width: 0; background: transparent; }
+}
+
+/*----------------------------end-input---------------------------------------*/
+
+
+@media (min-width: 764px){
+  .stops{margin-left:30%;
+         margin-right:30%;}
+  
+}
+
+.right{text-align:right;}
+.next{margin-right:10px;
+      }

@@ -8,22 +8,29 @@ import { AiOutlineUser } from "react-icons/ai";
 import { SiNike } from "react-icons/si";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import DashboardService from '../Services/DashboardService';
+import OptionPage from '../Services/OptionPageService';
 import { useState } from 'react';
 import $ from 'jquery';
 import { fetchUserData } from '../../Api/AuthenticationService';
 import { BiLogOut } from "react-icons/bi";
+import '../Styles/ViewPage.scss'
 
 
 
 
 
 
-function DetailedPage() {
+function ViewingPage() {
     const { id } = useParams()
     const [product, setProduct] = useState([])
     const [check,setCheck] = useState('')
     const [data,setData] = useState({})
+
+
+    $(".size").on('click', function(){
+        $(this).toggleClass('focus').siblings().removeClass('focus');
+     })
+
 
 
     useEffect(()=>{
@@ -83,7 +90,7 @@ function DetailedPage() {
     }
 
     const getById = (id) => {
-        DashboardService.getByIds(id).then((response) => {
+    OptionPage.productbyID(id).then((response) => {
             setProduct(response.data);
             console.log(response.data);
         }).catch(error => {
@@ -149,13 +156,13 @@ function DetailedPage() {
             <div className='image'>
                 <BootStrap.CardGroup>
                     <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage1}/>
+                        <BootStrap.Card.Img variant="top" src={product.image1}/>
                     </BootStrap.Card>
                     <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage2} />
+                        <BootStrap.Card.Img variant="top" src={product.image2} />
                     </BootStrap.Card>
                     <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage3} />
+                        <BootStrap.Card.Img variant="top" src={product.image3} />
                     </BootStrap.Card>
                 </BootStrap.CardGroup>
             </div>
@@ -167,8 +174,9 @@ function DetailedPage() {
             <br></br>
             <div className='marigi'>
                 <div className='bla'>{product.productname}</div>
-                <div className='bla'>{product.productprice}(includes all taxes)</div>
+                <div className='bla'>{product.price}(includes all taxes)</div>
                 <br />
+                <div className='bla'>{product.size}</div>
                 <div className='sizechart'>
                     <BootStrap.Form.Select aria-label="Default select example">
                         <option>Size Chart</option>
@@ -339,6 +347,13 @@ function DetailedPage() {
             </div>
 
 
+    
+
+
+
+            
+
+
             <br/>
 
             <div className='foot'>
@@ -464,4 +479,4 @@ function DetailedPage() {
     )
 }
 
-export default DetailedPage
+export default ViewingPage

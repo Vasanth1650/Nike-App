@@ -170,3 +170,7 @@ section .container.active .signinBx .imgBx {
     width: 100%;
   }
 }
+
+.login{
+  background-color: skyblue;
+}

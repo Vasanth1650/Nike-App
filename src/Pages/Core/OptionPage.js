@@ -8,7 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { SiNike } from "react-icons/si";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import DashboardService from '../Services/DashboardService';
+import OptionPageService from '../Services/OptionPageService';
 import { useState } from 'react';
 import $ from 'jquery';
 import { fetchUserData } from '../../Api/AuthenticationService';
@@ -20,8 +20,9 @@ import { BiLogOut } from "react-icons/bi";
 
 
 function DetailedPage() {
-    const { id } = useParams()
+    const { option } = useParams()
     const [product, setProduct] = useState([])
+    const [gentle,setGentle] = useState([])
     const [check,setCheck] = useState('')
     const [data,setData] = useState({})
 
@@ -74,7 +75,8 @@ function DetailedPage() {
 
     useEffect(() => {
         setCheck(data.username)
-        getById(id);
+        getByCategory(option);
+        getByGender(option);
     }, [])
 
     function logout(){
@@ -82,13 +84,29 @@ function DetailedPage() {
         usenavigate('/')
     }
 
-    const getById = (id) => {
-        DashboardService.getByIds(id).then((response) => {
+    const getByGender = (option) =>{
+        OptionPageService.findByGender(option).then((response)=>{
+          setGentle(response.data);
+          console.log(response.data);
+        }).catch(error=>{
+          console.log(error)
+        })
+    }
+
+    const getByCategory = (option) => {
+        OptionPageService.findByCategory(option).then((response) => {
             setProduct(response.data);
             console.log(response.data);
         }).catch(error => {
             console.log(error)
         })
+    }
+
+    
+
+    const Nextstep=(id)=>{
+      console.log(id);
+      usenavigate('/nextsteps/'+id);
     }
 
     React.useEffect(() => {
@@ -146,197 +164,92 @@ function DetailedPage() {
 
 
 
-            <div className='image'>
-                <BootStrap.CardGroup>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage1}/>
-                    </BootStrap.Card>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage2} />
-                    </BootStrap.Card>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.productimage3} />
-                    </BootStrap.Card>
-                </BootStrap.CardGroup>
+            <br/> 
+
+            <div>
+            <div >
+                <BootStrap.Row xs={1} md={4} >
+                    {
+                        product.map(product =>
+                            <BootStrap.Col>
+                                <div className='items'>
+                                    <BootStrap.CardGroup>
+                                        <BootStrap.Card >
+                                            <BootStrap.Card.Img variant="top" src={product.image1} />
+                                            <BootStrap.Card.Body>
+                                                <BootStrap.Card.Text style={{color:"red"}}>
+                                                    {product.gender}
+                                                </BootStrap.Card.Text>
+                                                <BootStrap.Card.Title>{product.productname}</BootStrap.Card.Title>
+                                                <BootStrap.Card.Text>
+                                                    {product.category}
+                                                </BootStrap.Card.Text>
+                                                <BootStrap.Card.Text>
+                                                    {product.price}
+                                                </BootStrap.Card.Text>
+                                            </BootStrap.Card.Body>
+                                            <BootStrap.Button onClick={()=> Nextstep(product.id)}>
+                                                Buy Now
+                                            </BootStrap.Button>
+                                        </BootStrap.Card>
+                                    </BootStrap.CardGroup>
+                                    <br />
+                                </div>
+                            </BootStrap.Col>
+
+                        )
+                    }
+                </BootStrap.Row>
             </div>
-
-
-
-
-
-            <br></br>
-            <div className='marigi'>
-                <div className='bla'>{product.productname}</div>
-                <div className='bla'>{product.productprice}(includes all taxes)</div>
-                <br />
-                <div className='sizechart'>
-                    <BootStrap.Form.Select aria-label="Default select example">
-                        <option>Size Chart</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </BootStrap.Form.Select>
-                </div>
-                <br />
-                <div className='bag'>
-                    <button className='bus' >Add To Bag</button>
-                </div>
-                <br />
-                <div>
-                    <button className='bus'>Add To Favourite</button>
-                </div>
-                <br />
-                <div className='bla'>Product Description</div>
-                <br/>
-                <div className='bla'>
-                    {product.productdescription}
-                </div>
-                <br/>
-                <div className='bla'>Product Specifications</div>
-                <br/>
-                <div className='bla'>
-                    {product.productspecification}
-                </div>
-
             </div>
-
-            <br/>
-            <br/>
-
-
 
 
             <div>
-                <div class="container">
-                    <div class="inner">
-                        <div class="rating">
-                            <span class="rating-num">4.0</span>
-                            <div class="rating-stars">
-                                <span><i class="active icon-star"></i></span>
-                                <span><i class="active icon-star"></i></span>
-                                <span><i class="active icon-star"></i></span>
-                                <span><i class="active icon-star"></i></span>
-                                <span><i class="icon-star"></i></span>
-                            </div>
-                            <div class="rating-users">
-                                <i class="icon-user"></i> 1,014,004 total
-                            </div>
-                        </div>
+            <div >
+                <BootStrap.Row xs={1} md={4} >
+                    {
+                        gentle.map(gentle =>
+                            <BootStrap.Col>
+                                <div className='items'>
+                                    <BootStrap.CardGroup>
+                                        <BootStrap.Card >
+                                            <BootStrap.Card.Img variant="top" src={gentle.image1} />
+                                            <BootStrap.Card.Body>
+                                                <BootStrap.Card.Text style={{color:"red"}}>
+                                                    {gentle.gender}
+                                                </BootStrap.Card.Text>
+                                                <BootStrap.Card.Title>{gentle.productname}</BootStrap.Card.Title>
+                                                <BootStrap.Card.Text>
+                                                    {gentle.category}
+                                                </BootStrap.Card.Text>
+                                                <BootStrap.Card.Text>
+                                                    {gentle.price}
+                                                </BootStrap.Card.Text>
+                                            </BootStrap.Card.Body>
+                                            <BootStrap.Button onClick={()=> Nextstep(gentle.id)}>
+                                                Buy Now
+                                            </BootStrap.Button>
+                                        </BootStrap.Card>
+                                    </BootStrap.CardGroup>
+                                    <br />
+                                </div>
+                            </BootStrap.Col>
 
-                        <div class="histo">
-                            <div class="five histo-rate">
-                                <span class="histo-star">
-                                    <i class="active icon-star"></i> 5           </span>
-                                <span class="bar-block">
-                                    <span id="bar-five" class="bar">
-                                        <span>566,784</span>&nbsp;
-                                    </span>
-                                </span>
-                            </div>
-
-                            <div class="four histo-rate">
-                                <span class="histo-star">
-                                    <i class="active icon-star"></i> 4           </span>
-                                <span class="bar-block">
-                                    <span id="bar-four" class="bar">
-                                        <span>171,298</span>&nbsp;
-                                    </span>
-                                </span>
-                            </div>
-
-                            <div class="three histo-rate">
-                                <span class="histo-star">
-                                    <i class="active icon-star"></i> 3           </span>
-                                <span class="bar-block">
-                                    <span id="bar-three" class="bar">
-                                        <span>94,940</span>&nbsp;
-                                    </span>
-                                </span>
-                            </div>
-
-                            <div class="two histo-rate">
-                                <span class="histo-star">
-                                    <i class="active icon-star"></i> 2           </span>
-                                <span class="bar-block">
-                                    <span id="bar-two" class="bar">
-                                        <span>44,525</span>&nbsp;
-                                    </span>
-                                </span>
-                            </div>
-
-                            <div class="one histo-rate">
-                                <span class="histo-star">
-                                    <i class="active icon-star"></i> 1           </span>
-                                <span class="bar-block">
-                                    <span id="bar-one" class="bar">
-                                        <span>136,457</span>&nbsp;
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rate">
-                    <div class="emoji">😀</div>
-                    <input type="range" min="0" max="4" step="1" />
-                </div>
-                    <div>
-                        <div class="detailBox">
-                            <div class="titleBox">
-                                <label>Comment Box</label>
-                                <button type="button" class="close" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="commentBox">
-
-                                <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            </div>
-                            <div class="actionBox">
-                                <ul class="commentList">
-                                    <li>
-                                        <div class="commenterImage">
-                                            <img src="http://placekitten.com/50/50" />
-                                        </div>
-                                        <div class="commentText">
-                                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="commenterImage">
-                                            <img src="http://placekitten.com/45/45" />
-                                        </div>
-                                        <div class="commentText">
-                                            <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="commenterImage">
-                                            <img src="http://placekitten.com/40/40" />
-                                        </div>
-                                        <div class="commentText">
-                                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                        </div>
-                                    </li>
-                                </ul>
-                                <form class="form-inline" role="form">
-                                    <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Your comments" />
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-default">Add</button>
-                                    </div>
-                                    
-                                </form>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                
+                        )
+                    }
+                </BootStrap.Row>
             </div>
+            </div>
+
+
+
+            
+
+
+
+            
+                    
+                
 
 
             <br/>

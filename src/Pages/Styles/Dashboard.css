@@ -1,12 +1,31 @@
 .body {
-  background-color: white;
+  background-color: black;
   color: #fff;
   margin: 0;
   overflow: hidden;
 }
+.gi{
+  background-color: white;
+}
+
+
+.headpops{background-image: url("http://res.cloudinary.com/rinma/image/upload/v1498143792/Clouds-Background-HD-min_y126nz.jpg");
+  color: black;
+  font-weight: bolder;
+  font-family: Comic Sans MS;
+  font-size: 25px;
+}
+
+.ko{
+  color: black;
+  font-weight: bolder;
+  font-family: Comic Sans MS;
+  font-size: 25px;
+}
+
 
 .popular{
-  background-color: white;
+  background-color: black;
 }
 
 .ad{
@@ -23,7 +42,7 @@
 
 .headpop{
   text-align: center;
-  color: #000;
+  color: white;
   font-size: larger;
   font-family: Brush Script MT;
   font-weight: bolder;
@@ -31,7 +50,8 @@
 }
 
 .headpop1{
-  color: #000;
+  color: black;
+  background-color: white;
   font-weight: bolder;
   font-family: Comic Sans MS;
   font-size: 25px;
@@ -269,10 +289,12 @@ body {
 
 
 .items{
+  
   color: #000;
   
-  
 }
+
+
 
 
 
@@ -451,3 +473,100 @@ color: #878787;
 .texting{
   color: #000;
 }
+
+
+
+
+.scroll{
+  background-image: url("http://res.cloudinary.com/rinma/image/upload/v1498143792/Clouds-Background-HD-min_y126nz.jpg");
+  text-align: center ; 
+  width: 90%;
+  margin-left: 5%;
+}
+
+
+.carding{
+  
+
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20vmin;
+  text-align: center;
+  line-height: 20vmin;
+}
+
+.gradient-text {
+  color: transparent;
+  background: conic-gradient(
+    #D9D7F1 12%, 
+    #BAABDA 12%, #BAABDA 33%, 
+    #E7FBBE 33%, #E7FBBE 55%, 
+    #FFCBCB 55%, #FFCBCB 70%, 
+    #B5DEFF 70%, #B5DEFF 87%, 
+    #F7D1BA 87%);
+  background-size: 50%;
+  background-clip: text;  
+  -webkit-background-clip: text;
+
+  animation: expand-rev 0.5s ease forwards;
+
+  cursor: pointer;
+}
+
+.gradient-text:hover {
+  animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+  0% {
+    background-size: 50%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 55%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 325%;
+    background-position: -10em -4em;
+  }
+}
+
+@keyframes expand-rev {
+  0% {
+    background-size: 325%;
+    background-position: -10em -4em;
+  }
+  20% {
+    background-size: 55%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 50%;
+    background-position: 0 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+

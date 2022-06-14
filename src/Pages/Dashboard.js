@@ -10,17 +10,55 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import DashboardService from './Services/DashboardService';
 import { useState } from 'react';
+import { fetchUserData } from '../Api/AuthenticationService'
+import { BiLogOut } from "react-icons/bi";
+import './Styles/DashboardAdd.css';
+import Slider from "react-slick";
+
+
 
 
 
 
 
 function Dashboard() {
+    const [product, setProduct] = useState([]);
     const usenavigate = useNavigate();
-    const [product, setProduct] = useState([])
+    const [query, setQuery] = useState('');
+    const [data, setData] = useState({});
+    const [check, setCheck] = useState('');
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        
+    };
+
 
 
     useEffect(() => {
+        if (!localStorage.getItem("USER_KEY")) {
+            localStorage.clear();
+            usenavigate('/')
+        }
+    }, [])
+
+    useEffect(() => {
+        if (check === "undefined") {
+            usenavigate('/')
+        }
+    }, [])
+
+    console.log(check)
+
+    console.log(data.username)
+
+
+    useEffect(() => {
+        setCheck(data.username)
         getAllProduct();
     }, [])
 
@@ -33,12 +71,46 @@ function Dashboard() {
         })
     }
 
-
-    const Nextstep=(id)=>{
-        console.log(id);
-        usenavigate('/nextstep/'+id);
+    const deleteProduct = (id) => {
+        DashboardService.deleteByProductId(id).then((response) => {
+            getAllProduct();
+            alert("Product Deleted Successfully")
+        }).catch(error => {
+            console.log(error)
+            alert("Something Went Wrong")
+        })
     }
 
+
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+        })
+    }, [])
+
+    const Nextstep = (id) => {
+        console.log(id);
+        usenavigate('/nextstep/' + id);
+    }
+    console.log(data.username)
+
+    function logout() {
+        localStorage.clear();
+        usenavigate('/')
+    }
+
+    const Options = (variable) => {
+        console.log(variable);
+        usenavigate('/section/' + variable);
+    }
+    const AllSection = (value) => {
+        console.log(value)
+        usenavigate('/section/' + value);
+    }
 
 
     return (
@@ -47,7 +119,7 @@ function Dashboard() {
 
             <BootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <BootStrap.Container>
-                    <BootStrap.Navbar.Brand href="#home"><SiNike /></BootStrap.Navbar.Brand>
+                    <BootStrap.Navbar.Brand href="/dashboard"><SiNike />NIKE</BootStrap.Navbar.Brand>
                     <BootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <BootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <BootStrap.Nav className="me-auto">
@@ -56,15 +128,19 @@ function Dashboard() {
                             <BootStrap.Nav.Link href="#pricing">KIDS</BootStrap.Nav.Link>
                             <BootStrap.Nav.Link href="#pricing">SPORTS</BootStrap.Nav.Link>
                             <BootStrap.Nav.Link href="#pricing">BRANDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">COLLECTIONS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">OUTLET</BootStrap.Nav.Link>
+
+                            {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 &&
+                                <BootStrap.Button href="/allsection/mainadd" variant="warning" type="submit">ADD PRODUCTS</BootStrap.Button>}
+
 
                         </BootStrap.Nav>
                         <BootStrap.Nav.Link href="#pricing" className='dum'><AiOutlineUser /></BootStrap.Nav.Link>
                         <BootStrap.Nav.Link href="#pricing" className='dum'><AiOutlineHeart /></BootStrap.Nav.Link>
                         <BootStrap.Nav.Link href="#pricing" className='dum'><BsHandbag /></BootStrap.Nav.Link>
+                        <BootStrap.Nav.Link onClick={() => logout()} className='dum'><BiLogOut /></BootStrap.Nav.Link>
                         <BootStrap.Form className="d-flex">
                             <BootStrap.FormControl
+                                onChange={e => setQuery(e.target.value)}
                                 type="search"
                                 placeholder="Search"
                                 className="me-2"
@@ -76,6 +152,23 @@ function Dashboard() {
                 </BootStrap.Container>
             </BootStrap.Navbar>
 
+
+
+
+
+            <div className='nikes'>
+
+                <span class="parallax-text" text="NIKE">
+                    NIKE
+                </span>
+
+                <img className="given" src="https://i.imgur.com/6DWEblv.png" alt="Nike sneaker" />
+            </div>
+
+
+            <div>
+                <h1 class="gradient-text">Happy Shopping!</h1>
+            </div>
 
 
             <div>
@@ -113,35 +206,7 @@ function Dashboard() {
 
 
 
-            <div className='body'>
-                <BootStrap.Card.Title className='nike'>Nike React SFB Carbon Men's Elite</BootStrap.Card.Title>
-                <div>
 
-                    <button className='adjust' class="custom-btn btn-14">Shop Now</button>
-                    <BootStrap.Card.Img className='card5' variant="top" src="https://static.nike.com/a/images/t_default/47614650-53ed-4316-96a2-5ef16d8badb0/react-sfb-carbon-mens-elite-outdoor-shoes-k7gKNd.png"></BootStrap.Card.Img>
-                </div>
-                <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
-                <div>
-
-                    <div class="content">
-                        <div class="content__container">
-
-                            <p class="content__container__text">
-                                Hello
-                            </p>
-
-                            <ul class="content__container__list">
-                                <li class="content__container__list__item">world !</li>
-                                <li class="content__container__list__item">Wanna !</li>
-                                <li class="content__container__list__item">Try !</li>
-                                <li class="content__container__list__item">Me !</li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
 
 
             <div className='bodys'>
@@ -150,156 +215,160 @@ function Dashboard() {
                     src="https://www.insidehook.com/wp-content/uploads/2021/12/Nike-Cover-St.jpg?resize=1200%2C630"></BootStrap.Card.Img>
 
                 </div>
-                <button class="custom-btn btn-16">SHOP MEN</button>
+                <button class="custom-btn btn-16" onClick={() => Options("mens training")}>SHOP MEN</button>
                 <br />
 
             </div>
 
-
-            <div className='bodysi'>
-                <div>EXPLORE THE NEW COLLECTIONS<BootStrap.Card.Img className='cardii' variant="top"
-                    src="https://www.hellokpop.com/wp-content/uploads/2020/03/2020030401000261100015281.jpg"></BootStrap.Card.Img>
+            <div className='adding'>
+                <div className='bodysi'>
+                    <div>EXPLORE THE NEW COLLECTIONS<BootStrap.Card.Img className='cardii' variant="top"
+                        src="https://www.hellokpop.com/wp-content/uploads/2020/03/2020030401000261100015281.jpg"></BootStrap.Card.Img>
+                    </div>
+                    <button class="custom-btn btn-16" onClick={() => Options("womens training")}>SHOP WOMEN</button>
                 </div>
-                <button class="custom-btn btn-16">SHOP WOMEN</button>
-            </div>
 
-            <div className='bodysii'>
-                <div>JOIN THE TREND NOW WITH NIKE<BootStrap.Card.Img className='cardi' variant="top"
-                    src="https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/89b65736-e63c-4c18-9d26-4baac0c89963/simple-fun-workouts-for-kids.jpg"></BootStrap.Card.Img>
-                </div>
-                <button class="custom-btn btn-16">SHOP KIDS</button>
-            </div>
-
-
-
-            <br />
-
-            <div className='popular'>
-                <div className='headpop'>POPULAR RIGHT NOW</div>
-                <div className='popularbut'>
-                    <BootStrap.Button variant="outline-secondary">SLIDES AND SANDALS</BootStrap.Button>
-                    <BootStrap.Button variant="outline-secondary">T-SHIRTS AND SHORTS</BootStrap.Button>
-                    <BootStrap.Button variant="outline-secondary">FOOTBALL</BootStrap.Button>
-                    <BootStrap.Button variant="outline-secondary">WHITE SNEAKERS</BootStrap.Button>
-                    <BootStrap.Button variant="outline-secondary">RUNNING</BootStrap.Button>
+                <div className='bodysii'>
+                    <div>JOIN THE TREND NOW WITH NIKE<BootStrap.Card.Img className='cardi' variant="top"
+                        src="https://static.nike.com/a/images/f_auto,cs_srgb/w_1920,c_limit/89b65736-e63c-4c18-9d26-4baac0c89963/simple-fun-workouts-for-kids.jpg"></BootStrap.Card.Img>
+                    </div>
+                    <button class="custom-btn btn-16" onClick={() => Options("kids training")}>SHOP KIDS</button>
                 </div>
             </div>
 
+            <div className='adding'>
+                <div >
+                    <br></br>
+                    <div className='headpop'>POPULAR RIGHT NOW</div>
+                    <div className='popularbut'>
+                        <BootStrap.Button variant="outline-secondary">SLIDES AND SANDALS</BootStrap.Button>
+                        <BootStrap.Button variant="outline-secondary">T-SHIRTS AND SHORTS</BootStrap.Button>
+                        <BootStrap.Button variant="outline-secondary">FOOTBALL</BootStrap.Button>
+                        <BootStrap.Button variant="outline-secondary">WHITE SNEAKERS</BootStrap.Button>
+                        <BootStrap.Button variant="outline-secondary">RUNNING</BootStrap.Button>
+                    </div>
+                    <br></br>
+                </div>
 
-            <br />
 
-            <div className='headpop1'>WHO ARE YOU SHOPPING FOR?</div>
 
-            <br />
+
+                <div >
+                    <div className='ko'>WHO ARE YOU SHOPPING FOR?</div>
+                    <br /></div>
+            </div>
+
 
             <div className='texting'>
+
                 <BootStrap.CardGroup>
-                    <BootStrap.Card>
+                    <BootStrap.Card onClick={() => AllSection("Men's")}>
                         <BootStrap.Card.Img variant="top" src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/yjmjfgvca8w01dcyzokk/sportswear-t-shirt-zmMkxS.png" />
                         <BootStrap.Card.Body>
                             <BootStrap.Card.Title>MEN</BootStrap.Card.Title>
-                            <BootStrap.Card.Text>
-                            Impossible Is Just A Big Word Thrown Around By Small Men Who Find It Easier To The World They’ve Been Given Than To Explore The Power They Have To Change It. 
-                            Impossible Is Not A Fact. It’s An Opinion. Impossible Is Not A Declaration. It’s A Dare. Impossible Is Potential. Impossible Is Temporary
-                            </BootStrap.Card.Text>
+
                         </BootStrap.Card.Body>
-                        <BootStrap.Button>
+                        <BootStrap.Button onClick={() => AllSection("Men's")}>
                             BE BOLD MEN
                         </BootStrap.Button>
                     </BootStrap.Card>
-                    <BootStrap.Card>
+
+                    <BootStrap.Card onClick={() => AllSection("Women's")}>
                         <BootStrap.Card.Img variant="top" src="https://i8.amplience.net/t/jpl/jdau_product_list?plu=jd_392502_al&qlt=85&qlt=92&w=320&h=320&v=1&fmt=auto" />
                         <BootStrap.Card.Body>
                             <BootStrap.Card.Title>WOMEN</BootStrap.Card.Title>
-                            <BootStrap.Card.Text>
-                                Hair Up Nikes On EarPhones In Lets Go.
-                                Sonner Or Later, You Start Taking Yourself Seriously
-                                You know When You Need A Break .You Know When You Need 
-                                A Rest. You Know What To Get Worked Up About,And What To 
-                                Rid Of.{' '}
-                            </BootStrap.Card.Text>
                         </BootStrap.Card.Body>
-                        <BootStrap.Button>
+                        <BootStrap.Button onClick={() => AllSection("Women's")}>
                             Get Set Go
                         </BootStrap.Button>
                     </BootStrap.Card>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top"  src="https://i.pinimg.com/736x/f6/b8/28/f6b82892e20bed0b6b7740b76e4a7e1a.jpg" />
+                    <BootStrap.Card onClick={() => AllSection("Kid's")}>
+                        <BootStrap.Card.Img variant="top" src="https://i.pinimg.com/736x/f6/b8/28/f6b82892e20bed0b6b7740b76e4a7e1a.jpg" />
                         <BootStrap.Card.Body>
                             <BootStrap.Card.Title>KIDS</BootStrap.Card.Title>
-                            <BootStrap.Card.Text>
-                            I continue to believe that if children are given the necessary tools to succeed, they will 
-                            succeed beyond their wildest dreams!” —David Vitter. Here are more great.
-                            </BootStrap.Card.Text>
                         </BootStrap.Card.Body>
-                        <BootStrap.Button>
+                        <BootStrap.Button onClick={() => AllSection("Kid's")}>
                             Dont Touch Me
                         </BootStrap.Button>
                     </BootStrap.Card>
                 </BootStrap.CardGroup>
             </div>
 
-            <br />
 
 
 
 
 
 
-            <div className="headpop1">
-                MOST SEARCHED ITEMS IN NIKE
+            <div className="adding">
+                <div ><br /></div>
+                <div className="headpops">MOST SEARCHED ITEMS IN NIKE</div>
+
+                {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 && <BootStrap.Button href='/dashboard/add' type="submit">ADD :)</BootStrap.Button>}
+                <div><br /></div>
             </div>
 
-            <br />
 
 
 
 
 
 
-            <br />
-            <div >
-                <BootStrap.Row xs={1} md={4} >
+
+
+            <div className='scroll'>
+                <Slider {...settings} >
                     {
-                        product.map(product =>
-                            <BootStrap.Col>
-                                <div className='items'>
-                                    <BootStrap.CardGroup>
-                                        <BootStrap.Card >
-                                            <BootStrap.Card.Img variant="top" src={product.productimage1} />
-                                            <BootStrap.Card.Body>
-                                                <BootStrap.Card.Text style={{color:"red"}}>
-                                                    Just In
-                                                </BootStrap.Card.Text>
-                                                <BootStrap.Card.Title>{product.productname}</BootStrap.Card.Title>
-                                                <BootStrap.Card.Text>
-                                                    {product.category}
-                                                </BootStrap.Card.Text>
-                                                <BootStrap.Card.Text>
-                                                    {product.productprice}
-                                                </BootStrap.Card.Text>
-                                            </BootStrap.Card.Body>
-                                            <BootStrap.Button onClick={()=> Nextstep(product.id)}>
-                                                Buy Now
-                                            </BootStrap.Button>
-                                        </BootStrap.Card>
-                                    </BootStrap.CardGroup>
-                                    <br />
-                                </div>
-                            </BootStrap.Col>
+                        product.filter(product => product.productname.toLowerCase().includes(query))
+                            .map(product =>
+                                    <div className='items'>
+                                        <BootStrap.CardGroup className='carding'>
+                                            <BootStrap.Card >
+                                                <BootStrap.Card.Img onClick={() => Nextstep(product.id)} variant="top" src={product.productimage1} />
+                                                <BootStrap.Card.Body>
+                                                    <BootStrap.Card.Text style={{ color: "red" }}>
+                                                        Just In
+                                                    </BootStrap.Card.Text>
+                                                    <BootStrap.Card.Title>{product.productname}</BootStrap.Card.Title>
+                                                    <BootStrap.Card.Text>
+                                                        {product.category}
+                                                    </BootStrap.Card.Text>
+                                                    <BootStrap.Card.Text>
+                                                        {product.productprice}
+                                                    </BootStrap.Card.Text>
+                                                </BootStrap.Card.Body>
+                                                <BootStrap.Button onClick={() => Nextstep(product.id)}>
+                                                    Buy Now
+                                                </BootStrap.Button>
+                                                <br />
+                                                {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 &&
+                                                    <BootStrap.Button variant="warning" type="submit">UPDATE :)</BootStrap.Button>}
+                                                <br />
+                                                {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 &&
+                                                    <BootStrap.Button onClick={() => deleteProduct(product.id)} variant="danger" type="submit">DELETE :)</BootStrap.Button>}
+                                            </BootStrap.Card>
+                                        </BootStrap.CardGroup>
+                                        <br />
+                                    </div>
 
-                        )
+                            )
                     }
-                </BootStrap.Row>
+                </Slider>
+                
+            </div>
+
+                    
+            <div className="adding">
+                <div ><br /></div>
+                <div className="headpops"></div>
+
+                
+                <div><br /></div>
             </div>
 
 
-            <br />
 
-
-
-
-
+            
 
             <div>
                 <footer class="footer-section">
