@@ -12,7 +12,7 @@ function Signup() {
     const [address,setAddress] = useState('')
     const [state,setState] = useState('')
     const [city,setCity] = useState('')
-    const authorities = [{roleCode:"ADMIN",roleDescription:"ADMIN"}]
+    const authorities = [{roleCode:"USER",roleDescription:"USER"}]
 
     const handleClick = (e) =>{
         e.preventDefault()

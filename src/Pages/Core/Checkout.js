@@ -108,7 +108,8 @@ function Checkout() {
             alert(response.razorpay_signature)
             setPaymentid(response.razorpay_payment_id)
             console.log(response.razorpay_payment_id)
-            console.log(paymentid)
+            PaymentProced(paymentid)
+            
             console.log(username,address,state,city,payment,productname,response.razorpay_payment_id)
             
           },
