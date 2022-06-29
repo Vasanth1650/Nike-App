@@ -131,7 +131,7 @@ function OrderStatus() {
 
 
                 </div>
-            <Footer/>
+            
 
         </div>
     )
