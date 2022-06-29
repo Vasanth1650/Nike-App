@@ -54,7 +54,7 @@ function MostPopular() {
         if ((localStorage.getItem("USER_KEY")) && (check != "undefined")) {
             const check = { userid, username, productname, image1, price, size }
             if (size) {
-                fetch("http://localhost:8080/charging/checkout", {
+                fetch("https://nike-backend.herokuapp.com/charging/checkout", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(check)

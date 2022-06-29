@@ -56,7 +56,7 @@ function MainDBAdd() {
         productspecification1,productspecification2,productspecification3,productspecification4,productspecification5,productimage1
         ,productimage2,productimage3,productimage4,productimage5,productimage6,productimage7,productimage8,productimage9,productimage10,productimage11,productimage12,gender,category1,category2,category3,
         delivery,collection}
-        fetch("http://localhost:8080/product/save",{
+        fetch("https://nike-backend.herokuapp.com/product/save",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(addproduct)

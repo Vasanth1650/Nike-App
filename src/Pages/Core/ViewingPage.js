@@ -42,7 +42,7 @@ function ViewingPage() {
         e.preventDefault()
         const checkouts = {userid,username,productname,image1,price,size}
         if(size){
-        fetch("http://localhost:8080/charging/checkout",{
+        fetch("https://nike-backend.herokuapp.com/charging/checkout",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(checkouts)

@@ -47,7 +47,7 @@ function MainDBAdd() {
         const addproduct={productname,productdescription,price,size1,size2,size3,size4,size5,
         productspecification1,productspecification2,productspecification3,productspecification4,productspecification5,image1
         ,image2,image3,gender,category1,category2,category3,delivery,collection}
-        fetch("http://localhost:8080/totalproducts/addproducts",{
+        fetch("https://nike-backend.herokuapp.com/totalproducts/addproducts",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(addproduct)

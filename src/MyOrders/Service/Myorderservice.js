@@ -1,5 +1,5 @@
 import axios from "axios";
-const VIEW_BASE_REST_API_URL = 'http://localhost:8080/ordered';
+const VIEW_BASE_REST_API_URL = 'https://nike-backend.herokuapp.com/ordered';
 
 
 class Myorderservice{

@@ -41,7 +41,7 @@ function DetailedPage() {
     const handleClick = (e) =>{
         e.preventDefault()
         const adddetails = {userid,username,productid,productname,image1}
-        fetch("http://localhost:8080/wishlist/addwishlist",{
+        fetch("https://nike-backend.herokuapp.com/wishlist/addwishlist",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(adddetails)
