@@ -17,7 +17,7 @@ function Signup() {
     const handleClick = (e) =>{
         e.preventDefault()
         const adddetails = {username,email,phonenumber,password,address,state,city,authorities}
-        fetch("http://localhost:8080/addnew/save",{
+        fetch("https://nike-backend.herokuapp.com/addnew/save",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(adddetails)
