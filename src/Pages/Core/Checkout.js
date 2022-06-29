@@ -180,7 +180,7 @@ function Checkout() {
 
     function PaymentProced(paymentid){
         if(paymentid){
-            fetch("http://localhost:8080/ordered/generateorder",{
+            fetch("https://nike-backend.herokuapp.com/ordered/generateorder",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify(confirm)
