@@ -127,7 +127,7 @@ function ViewDelivery() {
 
 
 
-            <Footer/>
+            
 
         
         </div>
