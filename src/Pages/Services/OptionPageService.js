@@ -18,6 +18,10 @@ class DashboardService{
     findByGender(option){
         return axios.get(VIEW_BASE_REST_API_URL+'/gender/'+option);
     }
+
+    findByCollection(option){
+        return axios.get(VIEW_BASE_REST_API_URL+'/collection/'+option);
+    }
 }
 
 export default new DashboardService();

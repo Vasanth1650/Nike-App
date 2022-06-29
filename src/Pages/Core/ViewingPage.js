@@ -14,6 +14,8 @@ import $ from 'jquery';
 import { fetchUserData } from '../../Api/AuthenticationService';
 import { BiLogOut } from "react-icons/bi";
 import '../Styles/ViewPage.scss'
+import Headers from '../../Common/Headers';
+import Footer from '../../Common/Footer';
 
 
 
@@ -23,28 +25,47 @@ import '../Styles/ViewPage.scss'
 function ViewingPage() {
     const { id } = useParams()
     const [product, setProduct] = useState([])
-    const [check,setCheck] = useState('')
-    const [data,setData] = useState({})
+    const [check, setCheck] = useState('')
+    const [data, setData] = useState({})
+    const [userid,setUserid] = useState('')
+    const [username,setUsername] = useState('')
+    const [productname,setProductname] = useState('')
+    const [image1, setImage1] = useState('')
+    const [price,setPrice] = useState('')
+    const [size,setSize] = useState('')
+    
+    console.log("Hi",size)
 
+   
 
-    $(".size").on('click', function(){
+    const handleClick = (e) =>{
+        e.preventDefault()
+        const checkouts = {userid,username,productname,image1,price,size}
+        if(size){
+        fetch("http://localhost:8080/charging/checkout",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(checkouts)
+        }).then(()=>{
+            console.log("Everything Went Perfect")
+            usenavigate("/checkout")
+        }).catch(error=>{
+            console.log("something went wrong")
+        })
+    }else{
+        alert("Please Select Size Of The Product")
+    }
+
+    }
+    
+    
+    $(".size").on('click', function () {
         $(this).toggleClass('focus').siblings().removeClass('focus');
-     })
-
-
-
-    useEffect(()=>{
-        if(!localStorage.getItem("USER_KEY")){
-            localStorage.clear();
-            usenavigate('/')
-        }
     })
 
-    useEffect(()=>{
-        if(check==="undefined"){
-            usenavigate('/')
-        }
-    },[])
+
+
+    
 
     const usenavigate = useNavigate()
 
@@ -79,18 +100,27 @@ function ViewingPage() {
 
     });
 
+    useEffect(()=>{
+        setUserid(data.id);
+        setUsername(data.email)
+        setProductname(product.productname)
+        setImage1(product.image1)
+        setPrice(product.price)
+    })
+
     useEffect(() => {
         setCheck(data.username)
         getById(id);
+        
     }, [])
 
-    function logout(){
+    function logout() {
         localStorage.clear();
         usenavigate('/')
     }
 
     const getById = (id) => {
-    OptionPage.productbyID(id).then((response) => {
+        OptionPage.productbyID(id).then((response) => {
             setProduct(response.data);
             console.log(response.data);
         }).catch(error => {
@@ -107,10 +137,10 @@ function ViewingPage() {
     }, [])
 
 
-    
 
 
-    
+
+
 
     console.log(data.username)
 
@@ -118,98 +148,64 @@ function ViewingPage() {
     return (
         <div className='bodyd'>
 
-
-            <BootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <BootStrap.Container>
-                    <BootStrap.Navbar.Brand href="/dashboard"><SiNike /></BootStrap.Navbar.Brand>
-                    <BootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <BootStrap.Navbar.Collapse id="responsive-navbar-nav">
-                        <BootStrap.Nav className="me-auto">
-                            <BootStrap.Nav.Link href="#features">MEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">WOMEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">KIDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">SPORTS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">BRANDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">COLLECTIONS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">OUTLET</BootStrap.Nav.Link>
-
-                        </BootStrap.Nav>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Profile<AiOutlineUser /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Liked<AiOutlineHeart /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Bag<BsHandbag /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link onClick={()=>logout()} className='dum'><div>LogOut<BiLogOut /></div></BootStrap.Nav.Link>
-                        <BootStrap.Form className="d-flex">
-                            <BootStrap.FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <BootStrap.Button variant="outline-warning">Search</BootStrap.Button>
-                        </BootStrap.Form>
-                    </BootStrap.Navbar.Collapse>
-                </BootStrap.Container>
-            </BootStrap.Navbar>
+            <Headers/>
+            
 
 
+            <div class="containers">
+                <div className='carding'>
 
-            <div className='image'>
-                <BootStrap.CardGroup>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.image1}/>
-                    </BootStrap.Card>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.image2} />
-                    </BootStrap.Card>
-                    <BootStrap.Card>
-                        <BootStrap.Card.Img variant="top" src={product.image3} />
-                    </BootStrap.Card>
-                </BootStrap.CardGroup>
+                    <BootStrap.Card.Img className='imgBxs' variant="top" src={product.image1} />
+
+                    <BootStrap.Card.Img className='imgBx1' variant="top" src={product.image2} />
+                    <div className='conenting'>
+                        <div className="produ">{product.productname}</div>
+                        <div>{product.category1}</div>
+                        <div>₹{product.price}
+                            <div>Includes All Taxes</div></div>
+                        <br />
+                        <br />
+                        <br />
+                        <div>Size</div>
+                        <button className='bus' value={product.size1} onClick={(e)=>setSize(product.size1)} validate>{product.size1}</button>
+                        <button className='bus' value={product.size2} onClick={(e)=>setSize(product.size2)}>{product.size2}</button>
+                        <div>---------------------------------</div>
+                        <button className='bus' value={product.size3} onClick={(e)=>setSize(product.size3)}>{product.size3}</button>
+                        <button className='bus' value={product.size4} onClick={(e)=>setSize(product.size4)}>{product.size4}</button>
+                        <div>---------------------------------</div>
+                        <button className='bus' value={product.size5} onClick={(e)=>setSize(product.size5)}>{product.size5}</button>
+
+                    </div>
+                </div>
+                <div className='carding'>
+
+                    <BootStrap.Card.Img className='imgBxs' variant="top" src={product.image3} />
+                    <BootStrap.Card.Img className='imgBx1' variant="top" src={product.image1} />
+                    <div className='conenting'>
+                    <BootStrap.Button className='bags' onClick={handleClick}><BsHandbag />Add to bag</BootStrap.Button>
+                    <BootStrap.Button className='bags'><AiOutlineHeart/>Favourite</BootStrap.Button>
+                    </div> 
+                </div>
+                            
             </div>
+            <div className='desc'>Description</div>
+            <div className='des'>{product.productdescription}</div>
+            <br/>
+            <div className='des'>★ Color Shown : {product.productspecification1}</div>
+            <div className='des'>★ Color Shown : {product.productspecification2}</div>
 
+
+            
+            
 
 
 
 
             <br></br>
-            <div className='marigi'>
-                <div className='bla'>{product.productname}</div>
-                <div className='bla'>{product.price}(includes all taxes)</div>
-                <br />
-                <div className='bla'>{product.size}</div>
-                <div className='sizechart'>
-                    <BootStrap.Form.Select aria-label="Default select example">
-                        <option>Size Chart</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </BootStrap.Form.Select>
-                </div>
-                <br />
-                <div className='bag'>
-                    <button className='bus' >Add To Bag</button>
-                </div>
-                <br />
-                <div>
-                    <button className='bus'>Add To Favourite</button>
-                </div>
-                <br />
-                <div className='bla'>Product Description</div>
-                <br/>
-                <div className='bla'>
-                    {product.productdescription}
-                </div>
-                <br/>
-                <div className='bla'>Product Specifications</div>
-                <br/>
-                <div className='bla'>
-                    {product.productspecification}
-                </div>
+            
 
-            </div>
-
-            <br/>
-            <br/>
+            <br />
+            <br />
 
 
 
@@ -284,9 +280,9 @@ function ViewingPage() {
                         </div>
                     </div>
                     <div class="rate">
-                    <div class="emoji">😀</div>
-                    <input type="range" min="0" max="4" step="1" />
-                </div>
+                        <div class="emoji">😀</div>
+                        <input type="range" min="0" max="4" step="1" />
+                    </div>
                     <div>
                         <div class="detailBox">
                             <div class="titleBox">
@@ -334,142 +330,29 @@ function ViewingPage() {
                                     <div class="form-group">
                                         <button class="btn btn-default">Add</button>
                                     </div>
-                                    
+
                                 </form>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
-                
+
             </div>
 
 
-    
 
 
 
-            
 
 
-            <br/>
 
-            <div className='foot'>
-            <footer class="footer-section">
-                    <div class="container">
-                        <div class="footer-cta pt-5 pb-5">
-                            <div class="row">
-                                <div class="col-xl-4 col-md-4 mb-30">
-                                    <div class="single-cta">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <div class="cta-text">
-                                            <h6>FIND A STORE</h6>
-                                            <h6>BECOME A MEMBER</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-4 mb-30">
-                                    <div class="single-cta">
-                                        <i class="fas fa-phone"></i>
-                                        <div class="cta-text">
-                                            <h6>SIGN UP FOR EMAIL</h6>
-                                            <h6>SEND US FEEDBACK</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-4 mb-30">
-                                    <div class="single-cta">
-                                        <i class="far fa-envelope-open"></i>
-                                        <div class="cta-text">
-                                            <h6>STUDENT DISCOUNT</h6>
-                                            <h6>ABOUT NIKE</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer-content pt-5 pb-5">
-                            <div class="row">
-                                <div class="col-xl-4 col-lg-4 mb-50">
-                                    <div class="footer-widget">
-                                        <div class="footer-logo">
-                                            <a href="index.html"><img src="https://img.etimg.com/thumb/msid-59738997,width-640,resizemode-4,imgsize-21421/nike.jpg" class="img-fluid" alt="logo" /></a>
-                                        </div>
-                                        <div class="footer-text">
-                                            <p>Nike, Inc. is an American multinational corporation that is engaged in the design, development, manufacturing, and worldwide marketing and sales of footwear, apparel, equipment, accessories, and services. The company is
-                                                headquartered near Beaverton, Oregon, in the Portland metropolitan area.</p>
-                                        </div>
-                                        <div class="footer-social-icon">
-                                            <span>Follow us</span>
-                                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                                            <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-heading">
-                                            <h3>Useful Links</h3>
-                                        </div>
-                                        <ul>
-                                            <li><a href="#">Order Status</a></li>
-                                            <li><a href="#">Delivery</a></li>
-                                            <li><a href="#">Returns</a></li>
-                                            <li><a href="#">Payment Options</a></li>
-                                            <li><a href="#">Contact Us On Nike.com Inquiries</a></li>
-                                            <li><a href="#">Contact Us On All Other Inquiries</a></li>
-                                            <li><a href="#">News</a></li>
-                                            <li><a href="#">Careers</a></li>
-                                            <li><a href="#">Investors</a></li>
-                                            <li><a href="#">Sustainability</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-heading">
-                                            <h3>Subscribe</h3>
-                                        </div>
-                                        <div class="footer-text mb-25">
-                                            <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
-                                        </div>
-                                        <div class="subscribe-form">
-                                            <form action="#">
-                                                <input type="text" placeholder="Email Address" />
-                                                <button><i class="fab fa-telegram-plane"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="copyright-area">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-                                    <div class="copyright-text">
-                                        <p>Copyright &copy; 2022, All Right Reserved <h>Nike</h></p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-                                    <div class="footer-menu">
-                                        <ul>
-                                            <li><a href="#">Guides</a></li>
-                                            <li><a href="#">Terms of Sale</a></li>
-                                            <li><a href="#">Terms of Use</a></li>
-                                            <li><a href="#">Nike Privacy Policy</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+
+            <br />
+
+            <Footer/>
 
 
 

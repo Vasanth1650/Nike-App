@@ -1,0 +1,326 @@
+/**
+ * Variables
+ */
+
+ $color-white: hsla(0, 0%, 100%, 1);
+ $color-black: hsla(0, 0%, 0%, 1);
+ $color-blue: hsla(244, 100%, 50%, 1);
+ $color-red: hsla(0, 100%, 50%, 1);
+ 
+ /**
+  * Functions
+  */
+ 
+ // Convert a pixel value to REM units
+ @function rem($pixel) {
+   @return $pixel / 16 + rem;
+ }
+ 
+ /**
+  * Placeholder
+  */
+ 
+ %curtain {
+   animation: curtain 0s cubic-bezier(0.445, 0.05, 0.55, 0.95) forwards;
+   content: '';
+   height: 100vh;
+   position: absolute;
+   right: -100%;
+   top: 0;
+   width: 100vw;
+   z-index: -1;
+ }
+ 
+ /**
+  * Styles
+  */
+.status{
+    color: white;
+}
+
+.status1{
+    color: red;
+}
+
+.butn{
+    background-color: orangered;
+}
+ 
+.body {
+   background-color: $color-black;
+   position: relative;
+ 
+   &::before,
+   &::after {
+     display: none;
+   }
+ 
+   &::before {
+     @extend %curtain;
+     animation-duration: 0.4s;
+     background-color: $color-black;
+   }
+   
+   &::after {
+     @extend %curtain;
+     animation-delay: 0.3s;
+     animation-duration: 0.5s;
+     background-color: $color-white;
+   }
+ }
+ 
+ @keyframes curtain {
+   100% {
+     transform: translateX(-100%);
+   }
+ }
+ 
+ .o-main { 
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   height: 100%;
+   position: relative;
+   
+   &::before {
+     @extend %curtain;
+     animation-delay: 0.4s;
+     animation-duration: 0.6s;
+     background-color: #000;
+     display: none;
+     z-index: 0;
+   }
+ }
+ 
+ .o-content {
+   z-index: 1;
+ }
+ 
+ // Drawing
+ .c-drawing {
+   animation: drawing-path 0.7s cubic-bezier(0.95, 0.05, 0.795, 0.035) 0.7s forwards;
+   stroke-dasharray: 254;
+   stroke-dashoffset: 254;
+   width: rem(150);
+ }
+ 
+ @keyframes drawing-path {
+   to {
+     stroke-dashoffset: 0;
+   }
+ }
+  
+ // Glitch
+ .c-glitch {
+   animation: fade-in 0.4s linear 1.80s forwards;
+   color: $color-white;
+   font-size: rem(18);
+   margin: rem(10) 0 0 rem(20);
+   opacity: 0;
+   position:relative;
+ 
+   &::before,
+   &::after {
+     animation: glitch-anime 0s infinite linear alternate-reverse;
+     background: $color-black;
+     color: $color-white;
+     content:attr(data-text);
+     position: absolute;
+     overflow:hidden;
+     top: 0;
+   }
+ 
+   &::before {
+     animation-duration: 2s;
+     left: rem(-2);
+     text-shadow: 1px 0 $color-blue;
+   }
+ 
+   &::after {
+     animation-duration: 5s;
+     left: rem(2);
+     text-shadow: -1px 0 $color-red;
+   }
+ }
+ 
+ @keyframes glitch-anime {
+   0%, 100% { 
+         clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+     }
+   
+     20% {
+         clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%);
+     }
+   
+     30% {
+         clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+     }
+   
+     40% {
+         clip-path: polygon(0 1%, 100% 1%, 100% 2%, 0 2%);
+     }
+   
+     50% {
+         clip-path: polygon(0 33%, 100% 33%, 100% 33%, 0 33%);
+     }
+   
+     55% {
+         clip-path: polygon(0 44%, 100% 44%, 100% 44%, 0 44%);
+     }
+   
+     60% {
+         clip-path: polygon(0 50%, 100% 50%, 100% 20%, 0 20%);
+     }
+ 
+   65% {
+ 
+         clip-path: polygon(0 70%, 100% 70%, 100% 70%, 0 70%);
+     }
+ 
+     70% {
+ 
+         clip-path: polygon(0 80%, 100% 80%, 100% 80%, 0 80%);
+     }
+ 
+     80% {
+         clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+     }
+ 
+     85% {
+         clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+     }
+ 
+     95% {
+         clip-path: polygon(0 72%, 100% 72%, 100% 78%, 0 78%);
+     }
+ }
+ 
+ @keyframes fade-in {
+   100% {
+     opacity: 1;
+   }
+ }
+ 
+ /* =Variables
+ ------------------------------------- */
+ // Colors
+ $pure-white: hsla(0, 0%, 100%, 1); // #fff
+ $pure-black: hsla(0, 0%, 0%, 1); // #000
+ $dark-jungle-green: hsla(210, 3%, 11%, 1); //1c1d1e
+ $grey-dark: hsla(0, 0%, 25%, 1); // #404040
+ $white-dark: hsla(0, 0%, 95%, 1); /// #f1f1f1
+ $fuel-yellow: hsla(36, 100%, 49%, 1); // #f89500
+ 
+ // Fonts
+ $droid-serif: 'Droid Serif', serif;
+ $kalam: 'Kalam', cursive;
+ $open-sans: 'Open Sans', sans-serif;
+ 
+ // transition
+ $transition: .5s cubic-bezier(.77, 0, .175, 1);
+ $transition-fast: .2s cubic-bezier(.77, 0, .175, 1);
+ 
+ /* =Functions
+ ------------------------------------- */
+ // Convert a pixel value to REM units
+ @function rem($pixel) {
+   @return $pixel / 16 + rem;
+ }
+ 
+ /* =Styles
+ ------------------------------------- */
+ .c-intro {
+   animation: fe30-anime 1s ease-in-out 4s forwards;
+   bottom: rem(50);
+   left: 50%;
+   opacity: 0;
+   position: fixed;
+   transform: translateX(-50%);
+ }
+ 
+ .c-fe30 {
+   color: $pure-white;
+   margin-top: rem(40);
+   text-align: center;
+   
+   a {
+     color: $pure-white;
+     
+     &:hover {
+       text-decoration: none;
+     }
+   }
+ }
+ 
+ .c-ryanyu {
+   background-color: transparent;
+   display: block;
+   font-family: $kalam;
+   height: rem(70);
+   margin: rem(20) auto 0;
+   position: relative;
+   text-align: center;
+   width: rem(70);
+ 
+   img {
+     background-color: $pure-white;
+     border: rem(3) solid $fuel-yellow;
+     border-radius: 50%;
+     height: rem(70);
+     object-fit: contain;
+     width: rem(70);
+   }
+ }
+ 
+ .c-ryanyu__front {
+   backface-visibility: hidden;
+   height: inherit;
+   position: absolute;
+   top: 0;
+   transform: rotateX(0) rotateY(0);
+   transform-style: preserve-3d;
+   transition: all $transition;
+   z-index: 2000;
+ 
+   .c-ryanyu:hover & {
+     transform: rotateY(180deg);
+   }
+ }
+ 
+ .c-ryanyu__back {
+   background-color: $pure-white;
+   backface-visibility: hidden;
+   border-radius: 50%;
+   color: $fuel-yellow;
+   height: inherit;
+   position: absolute;
+   text-align: center;
+   top: 0;
+   transform: rotateY(180deg);
+   transform-style: preserve-3d;
+   transition: all $transition;
+   width: inherit;
+   z-index: 1000;
+ 
+   &::before {
+     content: 'Ryan Yu';
+     display: block;
+     transform: rotate(-45deg) translate(-4px, 25px);
+     width: rem(50);
+   }
+ 
+   .c-ryanyu:hover & {
+     transform: rotateY(0);
+   }
+ }
+ 
+ @keyframes fe30-anime {
+   0% {
+     opacity: 0;
+   }
+   
+   100% {
+     opacity: 1;
+   }
+ }
+ 

@@ -19,7 +19,7 @@
     width: 100%;
     text-align: center;
     font-size: xx-large;
-    font-family: Brush Script MT;
+    font-family: Georgia, serif;
     
 }
 
@@ -115,7 +115,7 @@
 }
 .sub-text {
     color:#aaa;
-    font-family:verdana;
+    font-family: Georgia, serif;
     font-size:11px;
 }
 .actionBox {
@@ -123,13 +123,90 @@
     padding:10px;
 }
 
+.containers{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+.carding{
+  position: relative;
+  width: 100%;
+  margin-left: 2%;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+}
 
+.imgBxs{
+  width: 30%;
+  flex: 0 0 150px;
+}
 
+.imgBx1{
+  width: 30%;
+  margin-left: 2%;
+  flex: 0 0 150px;
+}
 
+.conenting{
+  margin-top: 10%;
+  margin-left: 80px;
+}
 
+.extra{
+  margin-top: 10%;
+}
 
+.conentings{
+  margin-top: 2%;
+  margin-left: 80px;
+}
 
+.conenting1{
+  margin-top: -15%;
+  margin-left: 80px;
+}
+
+.bus{
+  margin-left: 2%;
+  background: transparent;
+  color: #333333;
+}
+
+.bags{
+  background-color: black;
+  width: 300%;
+  height: 25%;
+}
+
+.produ{
+  font-size: 150%;
+  color: red;
+  font-weight: 500;
+}
+@media (max-width:100%){
+  .container{
+    flex-direction: column;
+  }
+}
+
+.desc{
+  text-align: center;
+  font-size: 70px;
+  font-weight: 300;
+  color: black;
+}
+
+.des{
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 300;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400);
 @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
@@ -240,3 +317,16 @@
 .foot{
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

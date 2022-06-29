@@ -13,6 +13,10 @@ import { useState } from 'react';
 import $ from 'jquery';
 import { fetchUserData } from '../../Api/AuthenticationService';
 import { BiLogOut } from "react-icons/bi";
+import {useCart} from "react-use-cart";
+import Headers from '../../Common/Headers';
+import Footer from '../../Common/Footer';
+
 
 
 
@@ -24,6 +28,31 @@ function DetailedPage() {
     const [product, setProduct] = useState([])
     const [check,setCheck] = useState('')
     const [data,setData] = useState({})
+    const[userid,setUserid]= useState('')
+    const[productid,setProductid] = useState({id})
+    const[productname,setProductname] = useState('')
+    const[image1,setImage1] = useState('')
+    const[username,setUsername] = useState('')
+    const[clone,setClone] = useState('')
+    const {addItems} = useCart()
+    
+    console.log("Price",clone)
+
+    const handleClick = (e) =>{
+        e.preventDefault()
+        const adddetails = {userid,username,productid,productname,image1}
+        fetch("http://localhost:8080/wishlist/addwishlist",{
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(adddetails)
+        }).then(()=>{
+            console.log("Wishlist added")
+        })
+    }
+
+
+
+    
 
 
     useEffect(()=>{
@@ -73,9 +102,15 @@ function DetailedPage() {
     });
 
     useEffect(() => {
+        setUsername(data.username)
+        setUserid(data.id)
+        setProductname(product.productname)
+        setProductid(product.id)
+        setClone(product.productprice)
+        setImage1(product.productimage1)
         setCheck(data.username)
         getById(id);
-    }, [])
+    },[data.username,data.id,product.productname,product.productid,product.productimage1,product.productprice])
 
     function logout(){
         localStorage.clear();
@@ -110,39 +145,11 @@ function DetailedPage() {
 
     return (
         <div className='bodyd'>
+            <Headers/>
 
+            
 
-            <BootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <BootStrap.Container>
-                    <BootStrap.Navbar.Brand href="/dashboard"><SiNike /></BootStrap.Navbar.Brand>
-                    <BootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <BootStrap.Navbar.Collapse id="responsive-navbar-nav">
-                        <BootStrap.Nav className="me-auto">
-                            <BootStrap.Nav.Link href="#features">MEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">WOMEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">KIDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">SPORTS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">BRANDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">COLLECTIONS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">OUTLET</BootStrap.Nav.Link>
-
-                        </BootStrap.Nav>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Profile<AiOutlineUser /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Liked<AiOutlineHeart /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><div>Bag<BsHandbag /></div></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link onClick={()=>logout()} className='dum'><div>LogOut<BiLogOut /></div></BootStrap.Nav.Link>
-                        <BootStrap.Form className="d-flex">
-                            <BootStrap.FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <BootStrap.Button variant="outline-warning">Search</BootStrap.Button>
-                        </BootStrap.Form>
-                    </BootStrap.Navbar.Collapse>
-                </BootStrap.Container>
-            </BootStrap.Navbar>
+            
 
 
 
@@ -178,12 +185,15 @@ function DetailedPage() {
                     </BootStrap.Form.Select>
                 </div>
                 <br />
-                <div className='bag'>
-                    <button className='bus' >Add To Bag</button>
-                </div>
+                <form action='/checkout'>
+                <button >BUY</button>
+                </form>
+
+                
+                
                 <br />
                 <div>
-                    <button className='bus'>Add To Favourite</button>
+                    <button className='bus' onClick={() => addItems(product)}>Add To Favourite</button>
                 </div>
                 <br />
                 <div className='bla'>Product Description</div>
@@ -456,7 +466,7 @@ function DetailedPage() {
                 </footer>
             </div>
 
-
+            <Footer/>
 
         </div>
 

@@ -566,7 +566,7 @@ svg{
 .nikes{
   height: 100vh;
   margin: 0;
-  background-color: black;
+  background-color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,7 +577,7 @@ svg{
   font-family: 'Montserrat', sans-serif;
   font-size: 25vw;
   font-style: italic;
-  color: white;
+  color: black;
 }
 
 .parallax-text::after{
@@ -591,9 +591,9 @@ svg{
 }
 
 .given{
-  width: 60vw;
-  animation: sneakerAnimation 5s cubic-bezier(0.2, 1, 0.2, 1)  alternate;
-  transform: rotate(-30deg);
+  width: 50%;
+  animation: sneakerAnimation 8s cubic-bezier(0.2, 1, 0.2, 1)  alternate;
+  transform: translate(2vw, -5vw) rotate(-30deg);
   margin-right: 15%;
   margin-top: 1%;
 }
@@ -603,6 +603,310 @@ svg{
     transform:  translate(100vw, 0) rotate(15deg);
   }
   90%, 100% {
-    transform:  translate(-5vw, -5vw) rotate(-30deg);
+    transform:  translate(2vw, -5vw) rotate(-30deg);
   }
+}
+
+
+
+
+
+
+
+
+:root {
+  --color-primary: hsl(187, 19%, 9%);
+  --color-secondary: hsl(20, 0%, 100%);
+  --color-accent: hsl(242, 90%, 61%);
+}
+
+
+.cards {
+  margin-left: 0%;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1167,c_limit/95b9f4ed-61d3-4d09-acc7-e415203d0c71/jordan.jpg");
+  background-size: cover;
+  margin: auto;
+  padding: 11rem 0 0;
+  width: 90%;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+
+
+.cards:hover,
+.cards:focus-within {
+  transform: scale(1.05);
+}
+
+.cards .cards-content {
+  --padding: 1.5rem;
+  padding: var(--padding);
+  
+  background: linear-gradient(
+   
+  );
+}
+@media (hover) {
+  .cards-content {
+    transform: translateY(70%);
+    transition: transform 0.4s ease;
+  }
+  .cards:hover .cards-content,
+  .cards:focus-within .cards-content {
+    transform: translateY(0%);
+    transition-delay: 0.5s;
+  }
+
+  .cards:focus-within .cards-content {
+    transtion-delay: 0s;
+  }
+
+  .cards-content > *:not(.cards-title) {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+
+  .cards:hover .cards-content > *:not(.cards-title),
+  .cards:focus-within .cards-content > *:not(.cards-title) {
+    opacity: 1;
+    transition-delay: 0.5s;
+  }
+  .cards-title::after {
+    transform: scaleX(0);
+  }
+}
+
+.cards-title {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  color: #F5F0E5;
+  font-size: larger;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.cards-title::after {
+  position: absolute;
+  font-size: larger;
+  font-weight: bolder;
+  height: 4px;
+  width: calc(100% + var(--padding));
+  left: calc(var(--padding) * -1);
+  bottom: 0;
+  background: var(--color-accent);
+  transition: transform 1s ease;
+  transform-origin: left;
+}
+.cards:hover .cards-title::after {
+  transform: scaleX(1);
+}
+.cards-desc {
+  color: white;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+.btns {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary);
+  background: var(--color-accent);
+  padding: 0.3em 1.25em;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+}
+.btns:hover,
+.btns:focus {
+  background: var(--color-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+
+.cardss {
+  margin-left: 5%;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1167,c_limit/75b532d7-723f-49f4-bd28-47c5668f88d1/jordan.png");
+  background-size: cover;
+  padding: 11rem 0 0;
+  width: 90%;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+
+
+.cardss:hover,
+.cardss:focus-within {
+  transform: scale(1.05);
+}
+
+.cardss .cardss-content {
+  --padding: 1.5rem;
+  padding: var(--padding);
+  background: linear-gradient(
+   
+  );
+}
+@media (hover) {
+  .cardss-content {
+    transform: translateY(70%);
+    transition: transform 0.4s ease;
+  }
+  .cardss:hover .cardss-content,
+  .cardss:focus-within .cardss-content {
+    transform: translateY(0%);
+    transition-delay: 0.5s;
+  }
+
+  .cardss:focus-within .cardss-content {
+    transtion-delay: 0s;
+  }
+
+  .cardss-content > *:not(.cardss-title) {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+
+  .cardss:hover .cardss-content > *:not(.cardss-title),
+  .cardss:focus-within .cardss-content > *:not(.cardss-title) {
+    opacity: 1;
+    transition-delay: 0.5s;
+  }
+  .cardss-title::after {
+    transform: scaleX(0);
+  }
+}
+
+.cardss-title {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  color: #F5F0E5;
+  font-size: larger;
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.cardss-title::after {
+  position: absolute;
+  height: 4px;
+  width: calc(100% + var(--padding));
+  left: calc(var(--padding) * -1);
+  bottom: 0;
+  font-size: larger;
+  font-weight: bolder;
+  background: var(--color-accent);
+  transition: transform 1s ease;
+  transform-origin: left;
+}
+.cardss:hover .cardss-title::after {
+  transform: scaleX(1);
+}
+.cardss-desc {
+  color: #F5F0E5;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+
+
+
+.cardsss {
+  margin-left: 5%;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  background-image: url("https://static.nike.com/a/images/f_auto/dpr_1.5,cs_srgb/w_1167,c_limit/10fbe895-e733-49aa-8d66-138eba257285/jordan.jpg");
+  background-size: cover;
+  padding: 11rem 0 0;
+  width: 90%;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+
+
+.cardsss:hover,
+.cardsss:focus-within {
+  transform: scale(1.05);
+}
+
+.cardsss .cardsss-content {
+  --padding: 1.5rem;
+  padding: var(--padding);
+  background: linear-gradient(
+   
+  );
+}
+@media (hover) {
+  .cardsss-content {
+    transform: translateY(70%);
+    transition: transform 0.4s ease;
+  }
+  .cardsss:hover .cardsss-content,
+  .cardsss:focus-within .cardsss-content {
+    transform: translateY(0%);
+    transition-delay: 0.5s;
+  }
+
+  .cardsss:focus-within .cardsss-content {
+    transtion-delay: 0s;
+  }
+
+  .cardsss-content > *:not(.cardsss-title) {
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+
+  .cardsss:hover .cardsss-content > *:not(.cardsss-title),
+  .cardsss:focus-within .cardsss-content > *:not(.cardsss-title) {
+    opacity: 1;
+    transition-delay: 0.5s;
+  }
+  .cardsss-title::after {
+    transform: scaleX(0);
+  }
+}
+
+.cardsss-title {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+  color: #F5F0E5;
+  text-transform: capitalize;
+  font-size: larger;
+  font-weight: bolder;
+}
+.cardsss-title::after {
+  font-size: larger;
+  font-weight: bolder;
+  position: absolute;
+  height: 4px;
+  width: calc(100% + var(--padding));
+  left: calc(var(--padding) * -1);
+  bottom: 0;
+  background: var(--color-accent);
+  transition: transform 1s ease;
+  transform-origin: left;
+}
+.cardsss:hover .cardsss-title::after {
+  transform: scaleX(1);
+}
+.cardsss-desc {
+  color: #F5F0E5;
+  
+  font-size: 0.8rem;
+  padding-top: 1rem;
 }

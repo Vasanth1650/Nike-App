@@ -1,41 +1,63 @@
-import React from 'react'
+//Dashboard Main Page UI Responsive For Every Devices
+
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './Styles/Login.css'
-import $ from 'jquery'
 import { useNavigate } from 'react-router-dom'
 import { authenticate, authFailure, authSuccess } from '../Redux/AuthAction'
 import { Alert, Spinner } from 'react-bootstrap';
 import { userLogin } from '../Api/AuthenticationService'
 import { connect } from 'react-redux'
+import { fetchUserData } from '../Api/AuthenticationService'
+
+
+
 
 const Login = ({loading,error, ...props})=> {
     const usenavigate = useNavigate();
+    const [data,setData] = useState({})
     const [values, setValues] = useState({
         username:'',
         password:''
     });
+    const[check,setCheck] = useState('')
+
+    
+
+    useEffect(() => {
+        if (check) {
+            usenavigate(-1)
+        }
+    }, [check])
+
+    useEffect(()=>{
+        setCheck(data.username)
+    },[])
+
+    React.useEffect(() => {
+        fetchUserData().then((response) => {
+
+            setData(response.data);
+        }).catch((e) => {
+            localStorage.clear();
+        })
+    }, [])
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
         props.authenticate();
-
         userLogin(values).then((response) => {
-
             console.log("response", response);
             if (response.status === 200) {
                 props.setUser(response.data);
                 localStorage.setItem("Assign",true);
-                usenavigate("/dashboard");
+                usenavigate(-1);
             }
             else {
                 props.loginFailure('Something Wrong!Please Try Again');
             }
-
-
         }).catch((err) => {
-
             if (err && err.response) {
-
                 switch (err.response.status) {
                     case 401:
                         console.log("401 status");
@@ -43,19 +65,10 @@ const Login = ({loading,error, ...props})=> {
                         break;
                     default:
                         props.loginFailure('Something Wrong!Please Try Again');
-
                 }
-
             }
-
-
-
-
-
         });
         //console.log("Loading again",loading);
-
-
     }
 
     const handleChange = (e) => {

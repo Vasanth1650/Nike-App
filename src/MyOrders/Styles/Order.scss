@@ -1,0 +1,205 @@
+// ----- Personal preference -----
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+    .order{
+    counter-reset: step;
+    background: url('https://3.bp.blogspot.com/-QOJgDm7gIek/VhrwWRL3i_I/AAAAAAAAIZA/fASX3UgfGUM/s1600/%2528CONCRETE%2B11%2529%2Bgranite%2Bwall%2Bsmooth%2Bdirt%2Bpillar%2Btexture.jpg');
+      background-size: cover;
+  }
+  // ----- Variable Declarations -----
+  $red: #EE2E24;
+  $blue: #002A5C;
+  @keyframes travel {
+    0%   { transform: translateX(-900px); }
+    100% { transform: translateX(0px); }
+  }
+  @keyframes sonar {
+    0%   { opacity: 1;
+      transform: scale(1);}
+    100% { transform: scale(4);
+      opacity: 0; }
+  }
+  // ----- Styles -----
+  .table {
+    display: table;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .box {
+    width: 800px;
+    background: #fff;
+    height: 750px;
+    margin: 0 auto;
+    box-shadow: 0 20px 200px rgba(black, 0.6);
+  }
+  .row {
+    position: relative;
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  .col4 {
+    width: 40%;
+    float: left;
+    height: 500px;
+  }
+  .col6 {
+    width: calc(50% - 1px);
+    float: left;
+    height: 200px;
+  }
+  .col8 {
+    width: 60%;
+    float: left;
+  }
+  .sidebar {
+    color: #fff;
+    background: $blue;
+    ul {
+      list-style-type: none;
+      -webkit-font-smoothing: antialiased;
+      padding: 60px 0 0 40px;
+      margin: 0;
+      li {
+        color: rgba(#fff, 0.4);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        height: 90px;
+        border-left: 2px solid rgba(#fff, 0.4);
+        padding-left: 30px;
+        position: relative;
+        &:before {
+          counter-increment: step;
+          content: counter(step);
+            display: block;
+          position: absolute;
+          left: -15px;
+          top: -15px;
+          width: 30px;
+          height: 30px;
+          background: $blue;
+          border: 2px solid rgba(#fff, 0.4);
+          line-height: 25px;
+          font-size: 12px;
+          text-align: center;
+          border-radius: 100%;
+        }
+        &.active {
+          color: #fff;
+          border-color: #fff;
+          &:before {
+            border-color: #fff;
+          }
+          &.current {
+            border-color: rgba(#fff, 0.5);
+          }
+        }
+        span {
+          position: relative;
+          top: -20px;
+          line-height: 40px;
+        }
+        &:last-child {
+          border-color: transparent;
+        }
+      }
+    }
+  }
+  .mapbox {
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+  }
+  div.map {
+    position: absolute;
+    width: 1800px;
+    height: 600px;
+    background-image: url('https://dl.dropboxusercontent.com/u/2255413/map.svg');
+    animation-duration: 20s;
+              animation-name: travel;
+              animation-iteration-count:infinite;
+              animation-timing-function: linear;
+  }
+  #dot {
+    width: 15px;
+    height: 15px;
+    background-color: $red;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -7px;
+    top: 50%;
+    margin-top: 10px;
+    .ping {
+      border: 1px solid $red;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background-color: rgba($red, 0.2);
+      border-radius: 100%;
+    animation-duration: 1.25s;
+              animation-name: sonar;
+              animation-iteration-count:infinite;
+              animation-timing-function: linear;
+    }
+  }
+  .col6 {
+    color: $red;
+  }
+  .col6:last-child {
+    border-left: 1px solid $red;
+    margin-left: 1px;
+    padding-left: 1px;
+  }
+  h2 {
+    padding: 20px 40px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin: 0;
+    text-transform: uppercase;
+    border-bottom: 2px dotted $red;
+  }
+  .address {
+    padding: 25px 40px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    color: #222;
+    line-height: 1.8;
+    letter-spacing: -0.2px;
+  }
+  #number {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    box-shadow: 0 3px 10px rgba(black, 0.2);
+    border-radius: 4px;
+    text-transform: uppercase;
+    width: 80%;
+    background: #fff;
+    font-size: 21px;
+    padding: 10px 13px;
+    padding-top: 10px;
+    div {
+      font-size: 12px;
+    font-weight: bold;
+      margin-bottom: 5px;
+      color: $blue;
+      letter-spacing: 1.5px;
+    }
+  }
+  // ----- Mobile styles -----
+  @media only screen 
+    and (max-device-width: 736px) { 
+  }

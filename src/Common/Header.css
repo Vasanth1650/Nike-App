@@ -1,0 +1,35 @@
+.bg{
+    background-color: whitesmoke;
+    padding-top: 0px !important;
+    padding-bottom: 0 !important;
+    min-height: 20px;
+}
+
+.cont{
+    size: 5ch;
+}
+
+.navtext{
+    margin-left: 70%;
+    font-size: small;
+    color: black;
+    display: flex;
+}
+
+.navtext1{
+    margin-left: 5%;
+    font-size: small;
+    color: black;
+    display: flex;
+}
+
+.navtext2{
+    margin-left: 5%;
+    font-size: small;
+    color: black;
+    display: flex;
+}
+
+
+
+

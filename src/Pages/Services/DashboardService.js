@@ -13,6 +13,10 @@ class DashboardService{
     deleteByProductId(id){
         return axios.delete(VIEW_BASE_REST_API_URL+'/delete/'+id)
     }
+
+    getByGender(gender){
+        return axios.get(VIEW_BASE_REST_API_URL+'/gender/'+gender)
+    }
 }
 
 export default new DashboardService();

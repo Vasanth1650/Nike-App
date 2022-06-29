@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchUserData } from '../../Api/AuthenticationService'
 import { BiLogOut } from "react-icons/bi";
+import Headers from '../../Common/Headers';
 
 function MainDBAdd() {
     const usenavigate = useNavigate();
@@ -21,19 +22,31 @@ function MainDBAdd() {
     const[productname,setProductname] = useState('');
     const[productdescription,setProductdescription] = useState('')
     const[price,setPrice] = useState('')
-    const[size,setSize] = useState('')
-    const[productspecification,setProductspecification] = useState('')
+    const[size1,setSize1] = useState('')
+    const[size2,setSize2] = useState('')
+    const[size3,setSize3] = useState('')
+    const[size4,setSize4] = useState('')
+    const[size5,setSize5] = useState('')
+    const[productspecification1,setProductspecification1] = useState('')
+    const[productspecification2,setProductspecification2] = useState('')
+    const[productspecification3,setProductspecification3] = useState('')
+    const[productspecification4,setProductspecification4] = useState('')
+    const[productspecification5,setProductspecification5] = useState('')
     const[delivery,setDelivery] = useState('')
     const[image1,setImage1] = useState('')
     const[image2,setImage2] = useState('')
     const[image3,setImage3] = useState('')
     const[gender,setGender] = useState('')
-    const[category,setCategory] = useState('')
+    const[category1,setCategory1] = useState('')
+    const[category2,setCategory2] = useState('')
+    const[category3,setCategory3] = useState('')
+    const[collection,setCollection] = useState('')
 
     const handleClick = (e)=>{
         e.preventDefault()
-        const addproduct={productname,productdescription,price,size,productspecification,image1
-        ,image2,image3,gender,category,delivery}
+        const addproduct={productname,productdescription,price,size1,size2,size3,size4,size5,
+        productspecification1,productspecification2,productspecification3,productspecification4,productspecification5,image1
+        ,image2,image3,gender,category1,category2,category3,delivery,collection}
         fetch("http://localhost:8080/totalproducts/addproducts",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
@@ -220,41 +233,11 @@ function MainDBAdd() {
     return (
         <div className='adding'>
 
+                <Headers/>
 
 
 
-            <BootStrap.Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <BootStrap.Container>
-                    <BootStrap.Navbar.Brand href="/dashboard"><SiNike /></BootStrap.Navbar.Brand>
-                    <BootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <BootStrap.Navbar.Collapse id="responsive-navbar-nav">
-                        <BootStrap.Nav className="me-auto">
-                            <BootStrap.Nav.Link href="#features">MEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">WOMEN</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">KIDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">SPORTS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">BRANDS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">COLLECTIONS</BootStrap.Nav.Link>
-                            <BootStrap.Nav.Link href="#pricing">OUTLET</BootStrap.Nav.Link>
-
-                        </BootStrap.Nav>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><AiOutlineUser /></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><AiOutlineHeart /></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link href="#pricing" className='dum'><BsHandbag /></BootStrap.Nav.Link>
-                        <BootStrap.Nav.Link onClick={() => logout()} className='dum'><BiLogOut /></BootStrap.Nav.Link>
-                        <BootStrap.Form className="d-flex">
-                            <BootStrap.FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <BootStrap.Button variant="outline-warning">Search</BootStrap.Button>
-                        </BootStrap.Form>
-                    </BootStrap.Navbar.Collapse>
-                </BootStrap.Container>
-            </BootStrap.Navbar>
-
+            
 
 
 
@@ -312,20 +295,51 @@ function MainDBAdd() {
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="group">
-                                        <input type="text" id='size' name='size' 
-                                        onChange={(e)=>setSize(e.target.value)} required/>
-                                        <label>Product Size</label>
-                                       
+                                        <input type="text" id='size1' name='size1' 
+                                        onChange={(e)=>setSize1(e.target.value)} required/>
+                                        <label>Available Size</label>
                                     </div>
+                                </div>
+                                
+                                
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='size2' name='size2' 
+                                        onChange={(e)=>setSize2(e.target.value)} required/>
+                                        <label>Available Size</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='size3' name='size3' 
+                                        onChange={(e)=>setSize3(e.target.value)} required/>
+                                        <label>Available Size</label>                                      
+                                    </div>                                   
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="group">
+                                        <input type="text" id='size4' name='size4' 
+                                        onChange={(e)=>setSize4(e.target.value)} required/>
+                                        <label>Available Size</label>                                       
+                                    </div>                                    
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='size5' name='size5' 
+                                        onChange={(e)=>setSize5(e.target.value)} required/>
+                                        <label>Available Size</label>      
+                                    </div>   
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
                                         <input type="text" id='delivery' name='delivery' 
                                         onChange={(e)=>setDelivery(e.target.value)} required/>
-                                        <label>Delivery Expected</label>
-                                       
-                                    </div>
+                                        <label>Delivery Expected</label> 
+                                    </div>                                 
                                 </div>
 
 
@@ -348,9 +362,53 @@ function MainDBAdd() {
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="group">
-                                        <input type="text" id='productspecification' name='productspecification' 
-                                        onChange={(e)=>setProductspecification(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
-                                        <label>Product Specification</label>
+                                        <input type="text" id='productspecification1' name='productspecification1' 
+                                        onChange={(e)=>setProductspecification1(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
+                                        <label>Color Shown</label>
+                                        <div className='invalid-feedback'>
+                                            Required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='productspecification2' name='productspecification2' 
+                                        onChange={(e)=>setProductspecification2(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
+                                        <label>Style</label>
+                                        <div className='invalid-feedback'>
+                                            Required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='productspecification3' name='productspecification3' 
+                                        onChange={(e)=>setProductspecification3(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
+                                        <label>Product Materials</label>
+                                        <div className='invalid-feedback'>
+                                            Required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='productspecification4' name='productspecification4' 
+                                        onChange={(e)=>setProductspecification4(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
+                                        <label>Roads Inspired</label>
+                                        <div className='invalid-feedback'>
+                                            Required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group">
+                                        <input type="text" id='productspecification5' name='productspecification5' 
+                                        onChange={(e)=>setProductspecification5(e.target.value)} required /><span class="highlight"></span><span class="bar"></span>
+                                        <label>Extra Details</label>
                                         <div className='invalid-feedback'>
                                             Required
                                         </div>
@@ -396,15 +454,17 @@ function MainDBAdd() {
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
-                                    <div class="group" onChange={(e)=>setCategory(e.target.value)}>
+                                    <div class="group" onChange={(e)=>setCategory1(e.target.value)}>
                                         <BootStrap.Form.Label htmlFor="category">Select Category</BootStrap.Form.Label>
                                         <br />
                                         <br />
                                         <BootStrap.Form.Group className="mb-3"  required>
 
-                                            <BootStrap.Form.Select id='category' name='category' 
+                                            <BootStrap.Form.Select id='category1' name='category1' 
                                         >
                                                 <option></option>
+                                                <option>Jordan Men's</option>
+                                                <option>Jordan Womens</option>
                                                 <option>Men's Shoes</option>
                                                 <option>Women's Shoes</option>
                                                 <option>Kids's Shoes</option>
@@ -413,6 +473,7 @@ function MainDBAdd() {
                                                 <option>kids training</option>
                                                 <option>Slides And Sandals</option>
                                                 <option>Football</option>
+                                                <option>BasketBall</option>
                                                 <option>Sneakers</option>
                                                 <option>T Shirt</option>
                                                 <option>Shorts</option>
@@ -422,6 +483,65 @@ function MainDBAdd() {
                                         
                                     </div>
                                 </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group" onChange={(e)=>setCollection(e.target.value)}>
+                                        <BootStrap.Form.Label htmlFor="collection">Collection</BootStrap.Form.Label>
+                                        <br />
+                                        <br />
+                                        <BootStrap.Form.Group className="mb-3"  required>
+
+                                            <BootStrap.Form.Select id='collection' name='collection' 
+                                        >
+                                                <option></option>
+                                                <option>Jordan</option>
+                                                
+                                            </BootStrap.Form.Select>
+                                        </BootStrap.Form.Group>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group" onChange={(e)=>setCategory2(e.target.value)}>
+                                        <BootStrap.Form.Label htmlFor="category">Color Options</BootStrap.Form.Label>
+                                        <br />
+                                        <br />
+                                        <BootStrap.Form.Group className="mb-3"  required>
+
+                                            <BootStrap.Form.Select id='category2' name='category2' 
+                                        >
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </BootStrap.Form.Select>
+                                        </BootStrap.Form.Group>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="group" onChange={(e)=>setCategory3(e.target.value)}>
+                                        <BootStrap.Form.Label htmlFor="category">Select Status Of Product</BootStrap.Form.Label>
+                                        <br />
+                                        <br />
+                                        <BootStrap.Form.Group className="mb-3"  required>
+
+                                            <BootStrap.Form.Select id='category3' name='category3' 
+                                        >
+                                                <option></option>
+                                                <option>Trend</option>
+                                                <option>Most Popular</option>
+                                                <option>Just In</option>
+                                            </BootStrap.Form.Select>
+                                        </BootStrap.Form.Group>
+                                        
+                                    </div>
+                                </div>
+
 
                                 <div class="col-xs-12 col-sm-12 right">
                                     <button type="button" id="nazad1" class="btn previous">Previous</button>
