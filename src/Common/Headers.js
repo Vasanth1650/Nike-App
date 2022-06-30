@@ -138,7 +138,7 @@ function Headers() {
                 <br/>
                 <a href='/' className='dum'>Returns</a>
                 <br/>
-                <a href='/' className='dum'>Contact Us</a>
+                <a href='/nikesupport' className='dum'>Guide Tour</a>
                 <br/>
                 <a href='/' className='dum'>Privacy And Policy</a>  
             </div>

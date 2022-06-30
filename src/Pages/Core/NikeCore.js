@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import * as BootStrap from 'react-bootstrap';
 import { BsHandbag } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
-import { SiNike } from "react-icons/si";
-import { BiLogOut } from "react-icons/bi";
 import '../Styles/ViewPage.scss'
 import Headers from '../../Common/Headers';
 import Footer from '../../Common/Footer';
@@ -13,10 +10,7 @@ import Footer from '../../Common/Footer';
 function NikeCore() {
     const usenavigate = useNavigate()
 
-    function logout() {
-        localStorage.clear();
-        usenavigate('/')
-    }
+   
 
 
     return (

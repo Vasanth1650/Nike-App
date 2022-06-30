@@ -4,12 +4,7 @@ import './Styles/Order.css';
 import Myorderservice from './Service/Myorderservice';
 import { useParams } from 'react-router-dom';
 import * as BootStrap from 'react-bootstrap';
-import { SiNike } from "react-icons/si";
-import { BsHandbag } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
 import { fetchUserData } from '../Api/AuthenticationService'
-import { BiLogOut } from "react-icons/bi";
 import {useNavigate} from 'react-router-dom'
 import Headers from '../Common/Headers';
 import Footer from '../Common/Footer';

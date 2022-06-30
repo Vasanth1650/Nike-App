@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import RefundServicee from './Service/RefundServicee'
 import * as BootStrap from 'react-bootstrap';
-import { SiNike } from "react-icons/si";
-import { BsHandbag } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
 import { fetchUserData } from '../Api/AuthenticationService'
-import { BiLogOut } from "react-icons/bi";
 import { useNavigate } from 'react-router-dom'
 import Headers from '../Common/Headers';
 import Footer from '../Common/Footer';
@@ -16,10 +11,7 @@ function RefundRequests() {
     const usenavigate = useNavigate()
 
 
-    function logout() {
-        localStorage.clear();
-        usenavigate('/')
-    }
+   
 
     useEffect(() => {
         gettingAllRequest()

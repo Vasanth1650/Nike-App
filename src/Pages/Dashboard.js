@@ -1,9 +1,5 @@
 import React from 'react';
 import * as BootStrap from 'react-bootstrap';
-import { SiNike } from "react-icons/si";
-import { BsHandbag } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
 import "./Styles/Dashboard.css";
 import "./Styles/Dashboard.scss";
 import { useNavigate } from 'react-router-dom';
@@ -11,9 +7,7 @@ import { useEffect } from 'react';
 import DashboardService from './Services/DashboardService';
 import { useState } from 'react';
 import { fetchUserData } from '../Api/AuthenticationService'
-import { BiLogOut } from "react-icons/bi";
 import './Styles/DashboardAdd.css';
-import Slider from "react-slick";
 import OptionPageService from './Services/OptionPageService';
 import Headers from '../Common/Headers';
 import Footer from '../Common/Footer';

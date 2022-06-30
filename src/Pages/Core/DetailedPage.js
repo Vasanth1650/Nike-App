@@ -2,17 +2,12 @@ import React from 'react'
 import '../Styles/DetailedPage.css';
 import '../Styles/DetailedPage.scss';
 import * as BootStrap from 'react-bootstrap';
-import { BsHandbag } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
-import { SiNike } from "react-icons/si";
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DashboardService from '../Services/DashboardService';
 import { useState } from 'react';
 import $ from 'jquery';
 import { fetchUserData } from '../../Api/AuthenticationService';
-import { BiLogOut } from "react-icons/bi";
 import {useCart} from "react-use-cart";
 import Headers from '../../Common/Headers';
 import Footer from '../../Common/Footer';

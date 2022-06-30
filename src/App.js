@@ -24,6 +24,7 @@ import MostPopular from './Pages/Core/MostPopular';
 import Headers from './Common/Headers';
 import Delivery from './Common/Delivery';
 import Tees from './Summer/Tees';
+import Chatbot from './ChatBot/Chatbots';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path='/delivery' element={<Delivery/>}/>
         <Route path='/subscription' element={<Sub/>}/>
         <Route path='/trail' element={<Tees/>}/>
+        <Route path='/nikesupport' element={<Chatbot/>}/>
       </Routes>
       </PageBugFix>
     </BrowserRouter>

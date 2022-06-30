@@ -29,10 +29,7 @@ function MostPopular() {
     const [check, setCheck] = useState('')
 
 
-    function logout() {
-        localStorage.clear();
-        usenavigate('/')
-    }
+    
 
     useEffect(() => {
         setUserid(data.id);

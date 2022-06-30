@@ -5,14 +5,9 @@ import '../Styles/DashboardAdd.scss';
 import formReset from 'jquery';
 import { useEffect } from 'react';
 import * as BootStrap from 'react-bootstrap';
-import { SiNike } from "react-icons/si";
-import { BsHandbag } from "react-icons/bs";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { fetchUserData } from '../../Api/AuthenticationService'
-import { BiLogOut } from "react-icons/bi";
 import Headers from '../../Common/Headers';
 
 function MainDBAdd() {
@@ -475,6 +470,8 @@ function MainDBAdd() {
                                                 <option>Football</option>
                                                 <option>BasketBall</option>
                                                 <option>Sneakers</option>
+                                                <option>Pants</option>
+                                                <option>Tops</option>
                                                 <option>T Shirt</option>
                                                 <option>Shorts</option>
                                                 <option>Socks</option>
