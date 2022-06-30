@@ -35,7 +35,7 @@ function NikeCore() {
                     <div className='carding'>
 
                         <BootStrap.Card.Img className='tre' variant="top" src='https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/7b84ca99-a145-45ec-a521-79876978ea79/air-jordan-xxxvi-pf-basketball-shoes-fjPfDg.png' />
-                        <video className='tres' autoPlay muted>
+                        <video className='tres' playsInline autoPlay muted>
                             <source src="https://static.nike.com/a/videos/q_90,vc_vp9/2b23be24-5222-468b-b871-1a7ab4180420/video.webm" type="video/mp4" />
                         </video>
                         <div className='conenting'>

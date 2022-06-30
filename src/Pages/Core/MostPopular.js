@@ -134,7 +134,7 @@ function MostPopular() {
 
                         <BootStrap.Card.Img className='tre' variant="top" src={product.productimage1} />
                         <div className='vido'>
-                            <ReactPlayer width={500} height={451} muted playing={true} url={product.productimage2} />
+                            <ReactPlayer width={500} height={451} muted playsinline playing={true} url={product.productimage2} />
                         </div>
 
 

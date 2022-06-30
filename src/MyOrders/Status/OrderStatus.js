@@ -36,7 +36,7 @@ function OrderStatus() {
         }
         if (id) {
             Myorderservice.updatingStatus(id, orderstatus).then((response) => {
-                usenavigate('/dashboard')
+                usenavigate('/')
             }).catch((error) => {
                 console.log(error)
             })
