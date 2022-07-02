@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
-    "@stripe/react-stripe-js": "^1.8.1",
     "@stripe/stripe-js": "^1.32.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -13,7 +12,6 @@
     "emailjs-com": "^3.2.0",
     "firebase": "^9.8.2",
     "jquery": "^3.6.0",
-    "mdb-ui-kit": "^4.2.0",
     "node-sass": "^7.0.1",
     "react": "16.8",
     "react-bootstrap": "^2.4.0",
