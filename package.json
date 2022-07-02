@@ -1,9 +1,6 @@
 {
   "name": "nike-app",
   "version": "0.1.0",
-  "engines": {
-    "node": "6.11.1"
-  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
@@ -36,6 +33,10 @@
     "slick-carousel": "^1.8.1",
     "stripe": "^9.8.0",
     "web-vitals": "^2.1.4"
+  },
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
