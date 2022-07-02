@@ -6,11 +6,26 @@ import { AiOutlineHeart } from "react-icons/ai";
 import '../Styles/ViewPage.scss'
 import Headers from '../../Common/Headers';
 import Footer from '../../Common/Footer';
+import $ from 'jquery'
 
 function NikeCore() {
     const usenavigate = useNavigate()
 
-   
+    $(document).ready(function() {
+        $('.popup-btn').click(function(e) {
+          $('.popup-wrap').fadeIn(500);
+          $('.popup-box').removeClass('transform-out').addClass('transform-in');
+      
+          e.preventDefault();
+        });
+      
+        $('.popup-close').click(function(e) {
+          $('.popup-wrap').fadeOut(500);
+          $('.popup-box').removeClass('transform-in').addClass('transform-out');
+      
+          e.preventDefault();
+        });
+      });
 
 
     return (
@@ -87,15 +102,24 @@ function NikeCore() {
                         <div className='conenting'>
 
                         </div>
-                        <div>
-                            <BootStrap.DropdownButton
-                                className='droping'
-                                variant="outline-secondary"
-                                title="Dropdown"
-                                id="input-group-dropdown-1"
-                            >
-                                <div>wjabdnwakndknwaknk</div>
-                            </BootStrap.DropdownButton>
+                        
+                        <button class="btn popup-btn">Hlooooo</button>
+
+            <div class="popup-wrap">
+                            <div class="popup-box">
+                                <h2>Product Details</h2>
+                                <div>*Color Shown</div>
+                                <br/>
+                                <div>*Style</div>
+                                <br/>
+                                <div>Product Specifications</div>
+                                <div></div>
+                                <br/>
+                                <div>hvh</div>
+                                <br/>
+                                
+                                <a class="close-btn popup-close" href="#">x</a>
+                            </div>
                         </div>
                     </div>
 

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { fetchUserData } from '../../Api/AuthenticationService';
 import Headers from '../../Common/Headers';
 import Footer from '../../Common/Footer';
-
+import $ from 'jquery'
 
 
 
@@ -17,29 +17,38 @@ import Footer from '../../Common/Footer';
 
 function Separate() {
     const { gender } = useParams()
-    const [product, setProduct] = useState([])
     const [gentle,setGentle] = useState([])
     const [check,setCheck] = useState('')
-    const [data,setData] = useState({})
-    const [collection,setCollection] = useState([])
-
-    console.log(gender)
-
-
-    
-
+    const [data,setData] = useState({})    
     const usenavigate = useNavigate()
-
-    
+ 
 
     useEffect(() => {
         setCheck(data.username)
         findByGender(gender)
     }, [])
 
-    function logout(){
-        localStorage.clear();
-        usenavigate('/')
+    const deleteById = (productid) =>{
+        if(productid){
+            const confirmBox = window.confirm("Do Your Really Want To Delete This Product");
+        
+        if(confirmBox === true){
+            const confirmation = window.confirm("Click Ok To Continue TO Delete");
+        
+        if(confirmation === true){
+            DashboardService.deleteByProductId(productid).then((response)=>{
+                findByGender();
+                alert("Product Deleted SuccessFully");
+            }).catch(error =>{
+                console.log(error)
+            })
+        }
+    }
+    }
+    }
+
+    function UpdateDetails(id){
+        usenavigate('/update/product/'+id)
     }
 
     const findByGender = (gender) =>{
@@ -51,7 +60,33 @@ function Separate() {
         })
     }
 
-    
+    function popupOpenClose(popup) {
+
+        /* Add div inside popup for layout if one doesn't exist */
+        if ($(".wrapper").length == 0) {
+            $(popup).wrapInner("<div class='wrapper'></div>");
+        }
+
+        /* Open popup */
+        $(popup).show();
+
+        /* Close popup if user clicks on background */
+        $(popup).click(function (e) {
+            if (e.target == this) {
+                if ($(popup).is(':visible')) {
+                    $(popup).hide();
+                }
+            }
+        });
+
+        /* Close popup and remove errors if user clicks on cancel or close buttons */
+        $(popup).find("button[name=close]").on("click", function () {
+            if ($(".formElementError").is(':visible')) {
+                $(".formElementError").remove();
+            }
+            $(popup).hide();
+        });
+    }
 
     const Nextstep=(id)=>{
       console.log(id);
@@ -104,16 +139,21 @@ function Separate() {
                                                     ({gentle.category3})
                                                 </BootStrap.Card.Text>
                                                 <BootStrap.Card.Title>{gentle.productname}</BootStrap.Card.Title>
-                                                <BootStrap.Card.Text>
+                                                <div>
                                                     {gentle.category1}
-                                                </BootStrap.Card.Text>
-                                                <BootStrap.Card.Text>
+                                                </div>
+                                                <div>
                                                 ₹{gentle.productprice}
-                                                </BootStrap.Card.Text>
+                                                </div>
                                             </BootStrap.Card.Body>
                                             <BootStrap.Button onClick={()=> Nextstep(gentle.id)}>
                                                 Buy Now
                                             </BootStrap.Button>
+                                            {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 &&
+                                            <BootStrap.NavLink onClick={()=>deleteById(gentle.id)}>Delete</BootStrap.NavLink>}
+                                            {data && data.roles && data.roles.filter(value => value.roleCode === 'ADMIN').length > 0 &&
+                                            <BootStrap.NavLink onClick={()=>UpdateDetails(gentle.id)}>Update</BootStrap.NavLink>}
+
                                         </BootStrap.Card>
                                     </BootStrap.CardGroup>
                                     <br />
@@ -127,7 +167,7 @@ function Separate() {
             </div>
 
 
-
+            
             
 
 

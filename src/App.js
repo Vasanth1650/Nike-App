@@ -25,6 +25,9 @@ import Headers from './Common/Headers';
 import Delivery from './Common/Delivery';
 import Tees from './Summer/Tees';
 import Chatbot from './ChatBot/Chatbots';
+import Test from './Test';
+import AllSearch from './Search/AllSearch';
+import UpdateProduct from './Pages/Core/UpdateProduct';
 
 function App() {
   return (
@@ -55,6 +58,9 @@ function App() {
         <Route path='/subscription' element={<Sub/>}/>
         <Route path='/trail' element={<Tees/>}/>
         <Route path='/nikesupport' element={<Chatbot/>}/>
+        <Route path='/test' element={<Test/>}/>
+        <Route path='/search' element={<AllSearch/>}/>
+        <Route path='/update/product/:id' element={<UpdateProduct/>}/>
       </Routes>
       </PageBugFix>
     </BrowserRouter>

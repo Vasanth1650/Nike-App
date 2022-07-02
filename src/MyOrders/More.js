@@ -34,6 +34,7 @@ function More() {
         if (check === "undefined") {
             usenavigate('/login')
         }
+       
     }, [])
 
     const m = localStorage.getItem("Userid")

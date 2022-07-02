@@ -3,11 +3,16 @@ import { fetchUserData } from '../Api/AuthenticationService';
 import * as BootStrap from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com'
+import { SiTiktok } from "react-icons/si";
+
 
 function Footer() {
     const [data, setData] = useState({});
     const usenavigate = useNavigate()
 
+    function refresh(){
+        window.location.reload(false);
+    }
 
     React.useEffect(() => {
         fetchUserData().then((response) => {
@@ -92,8 +97,8 @@ function Footer() {
                                         </div>
                                         <div class="footer-social-icon">
                                             <span>Follow us</span>
-                                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                            <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                            <a href="https://www.facebook.com/nike/"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                            <a href="https://twitter.com/nikestore"><i class="fab fa-twitter twitter-bg"></i></a>
                                             <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
                                         </div>
                                     </div>
@@ -104,7 +109,7 @@ function Footer() {
                                             <h3>Useful Links</h3>
                                         </div>
                                         <ul>
-                                            <li><a href="/checking">Order Status</a></li>
+                                            <li><a onClick={refresh} href="/checking">Order Status</a></li>
                                             <li><a href="/delivery">Delivery</a></li>
                                             <li><a href="#">Returns</a></li>
                                             <li><a href="#">Payment Options</a></li>

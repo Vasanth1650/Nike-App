@@ -51,7 +51,9 @@ const Login = ({loading,error, ...props})=> {
             if (response.status === 200) {
                 props.setUser(response.data);
                 localStorage.setItem("Assign",true);
+
                 usenavigate(-1);
+                
             }
             else {
                 props.loginFailure('Something Wrong!Please Try Again');

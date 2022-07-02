@@ -11,7 +11,7 @@
 section {
   position: relative;
   min-height: 100vh;
-  background-color: #333;
+  background-color: salmon;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +22,7 @@ section .container {
   position: relative;
   width: 800px;
   height: 600px;
-  background: black;
+  background: white;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -80,7 +80,7 @@ section .container .user .formBx form input {
   position: relative;
   width: 100%;
   padding: 10px;
-  background: black;
+  background: white;
   color: #333;
   border: none;
   outline: none;

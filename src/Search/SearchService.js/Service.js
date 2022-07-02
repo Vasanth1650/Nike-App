@@ -1,7 +1,7 @@
 import axios from 'axios';
 const VIEW_BASE_REST_API_URL = 'https://nike-backend.herokuapp.com/product';
 
-class DashboardService{
+class Service{
     getAllProducts(){
         return axios.get(VIEW_BASE_REST_API_URL+'/allproducts');
     }
@@ -17,10 +17,6 @@ class DashboardService{
     getByGender(gender){
         return axios.get(VIEW_BASE_REST_API_URL+'/gender/'+gender)
     }
-
-    update(id,addproduct){
-        return axios.put(VIEW_BASE_REST_API_URL+'/update/'+id,addproduct)
-    }
 }
 
-export default new DashboardService();
+export default new Service();

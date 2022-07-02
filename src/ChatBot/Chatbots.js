@@ -5,11 +5,23 @@ import Headers from '../Common/Headers';
 import Footer from '../Common/Footer';
 import { useNavigate } from 'react-router-dom';
 import * as BootStrap from 'react-bootstrap';
+import {ThemeProvider} from 'styled-components'
 
 
 function Chatbots() {
   const usenavigate = useNavigate()
   const [id,setId] = useState()
+  const theme = {
+    background: '#C9FF8F',
+    headerBgColor: 'orange',
+    headerFontSize: '20px',
+    color:'black',
+    botBubbleColor: '#0F3789',
+    headerFontColor: 'white',
+    botFontColor: 'white',
+    userBubbleColor: '#FF5733',
+    userFontColor: 'black',
+};
 
   useEffect(()=>{
     setId(localStorage.getItem("Userid"));
@@ -148,8 +160,11 @@ function Chatbots() {
   return (
     <div>
         <Headers/>
+        
         <div className='chatbox'>
+        <ThemeProvider theme={theme}>
         <ChatBot steps={steps} />
+        </ThemeProvider>
         </div>
         <Footer/>
        
